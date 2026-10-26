@@ -1,0 +1,13 @@
+{
+  "name": "СреDA",
+  "short_name": "СреDA",
+  "start_url": "./sreda.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f1fa",
+  "theme_color": "#6C4CF5",
+  "icons": [
+    {"src": "sreda-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "sreda-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+  ]
+}
