@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>СреDA</title>
+<meta name="apple-mobile-web-app-title" content="СреDA">
+<meta name="application-name" content="СреDA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#6C4CF5">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>
+:root{--bg:#f3f1fa;--card:#fff;--ink:#1f1a2e;--mut:#7a7390;--acc:#6c4cf5;--ok:#22b45a;--bad:#ef4444;--line:#e7e3f3}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.app{max-width:480px;margin:0 auto;min-height:100vh;padding:0 14px 90px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0 8px}
+.role{display:flex;background:#e4def8;border-radius:12px;padding:3px}
+.role button{flex:1;border:0;background:none;padding:8px;border-radius:10px;font:inherit;font-weight:700;color:var(--mut)}
+.role button.on{background:#fff;color:var(--acc);box-shadow:0 1px 4px #0001}
+.top{display:flex;align-items:center;gap:8px;margin-top:10px}
+.top h1{font-size:20px;margin:0;flex:1}
+.top h1 small{display:block;font-size:12px;color:var(--mut);font-weight:600;letter-spacing:.5px}
+.pill{background:#fff;border-radius:20px;padding:5px 10px;font-weight:700;font-size:14px;box-shadow:0 1px 3px #0001;white-space:nowrap}
+.card{background:var(--card);border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 2px 8px #2a1f5510}
+.card h2{margin:0 0 10px;font-size:17px}
+.card h2 small{color:var(--mut);font-weight:400;font-size:13px}
+/* персонаж */
+.sim{text-align:center;padding:18px 16px 12px}
+.plumbob{width:24px;height:36px;margin:0 auto 6px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px) rotateY(180deg)}}
+.face{font-size:72px;line-height:1}
+.mood{color:var(--mut);margin-top:2px}
+.simname{border:0;background:none;font:inherit;font-size:20px;font-weight:800;color:var(--ink);margin-top:6px;padding:4px 8px;border-radius:10px}
+.simname span{font-size:14px;opacity:.6}
+/* пирамида */
+.pyr{display:flex;flex-direction:column;align-items:center;gap:5px;margin:6px 0 2px}
+.star{font-size:34px;filter:grayscale(1);opacity:.3;transition:.6s}
+.star.on{filter:none;opacity:1;animation:glow 2s ease-in-out infinite}
+@keyframes glow{50%{transform:scale(1.15)}}
+.fl{height:52px;display:flex;align-items:center;justify-content:center;gap:6px;color:#fff;font-weight:800;font-size:14px;clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);transition:.6s;text-shadow:0 1px 2px #0003;cursor:pointer}
+.fl.off{filter:grayscale(1);opacity:.35}
+.fl span{font-weight:600;font-size:12px;opacity:.95}
+.hint{font-size:12px;color:var(--mut);text-align:center;margin-top:6px}
+/* шкалы */
+.need{display:grid;grid-template-columns:26px 104px 1fr 42px;align-items:center;gap:8px;margin:9px 0}
+.need .e{font-size:20px}
+.bar{height:12px;background:#eee9f8;border-radius:8px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:8px;transition:width .6s,background .6s}
+.need b{font-size:13px;text-align:right}
+.dots{font-size:15px;letter-spacing:1px}
+.ftitle{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;margin:14px 0 2px}
+.ftitle:first-of-type{margin-top:0}
+/* задания */
+.task{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.task .t{flex:1}
+.task small{display:block;color:var(--mut)}
+.btn{border:0;border-radius:12px;padding:9px 13px;font:inherit;font-weight:700;background:var(--acc);color:#fff;white-space:nowrap}
+.btn.g{background:var(--ok)}.btn.r{background:#fde8e8;color:var(--bad)}.btn.s{background:#eee9f8;color:var(--acc)}
+.btn:disabled{opacity:.45}
+.st{font-size:13px;font-weight:700;padding:6px 10px;border-radius:10px;white-space:nowrap}
+.st.p{background:#fff4dc;color:#b7791f}.st.d{background:#e3f7ea;color:var(--ok)}
+.ret{color:var(--bad);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rw{background:#faf8ff;border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.rw .e{font-size:38px}.rw .n{font-weight:700;margin:4px 0}.rw .p{color:var(--acc);font-weight:800;margin-bottom:8px}
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.bd{font-size:11px;color:var(--mut)}.bd div{font-size:30px}
+.bd.off div{filter:grayscale(1);opacity:.25}
+.tg{background:#fff;border-radius:16px;overflow:hidden;margin:10px 0;border:1px solid var(--line)}
+.tg .h{background:#2aabee;color:#fff;font-size:13px;padding:6px 12px;font-weight:700}
+.tg .b{padding:12px}
+.tg .k{display:flex;gap:8px;margin-top:10px}.tg .k .btn{flex:1}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom)}
+nav .in{display:flex;max-width:480px;width:100%}
+nav button{flex:1;border:0;background:none;padding:10px 4px 12px;font:inherit;font-size:12px;color:var(--mut)}
+nav button span{display:block;font-size:22px}
+nav button.on{color:var(--acc);font-weight:700}
+.empty{color:var(--mut);text-align:center;padding:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+input,select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:10px;min-width:0;flex:1}
+.demo{background:#1f1a2e;color:#fff}.demo p{color:#c9c3dc;margin:4px 0 10px;font-size:13px}
+.log{font-size:13px;color:var(--mut);margin:4px 0}
+.heart{display:flex;align-items:center;gap:12px}.heart .e{font-size:40px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#1f1a2e;color:#fff;padding:10px 16px;border-radius:14px;opacity:0;transition:.3s;pointer-events:none;max-width:90%;text-align:center;z-index:9}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.pop{animation:pop .5s}@keyframes pop{40%{transform:scale(1.25)}}
+.bigs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.big{border:0;border-radius:16px;padding:18px 10px;font:inherit;font-size:16px;font-weight:800;background:linear-gradient(135deg,#4cc72a,#22a06b);color:#fff;text-align:center;box-shadow:0 4px 12px #22a06b40}
+.big.ok{background:#e3f7ea;color:var(--ok);box-shadow:none;font-size:14px}
+.chk{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ci{border:1px solid var(--line);background:#faf8ff;border-radius:10px;padding:6px 9px;font:inherit;font-size:13px;color:var(--ink)}
+.ci.on{background:#e3f7ea;border-color:#bfe9cc;color:var(--ok);font-weight:700}
+.tgl{border:0;border-radius:10px;padding:7px 10px;font:inherit;font-size:12px;font-weight:700;background:#eee;color:var(--mut);white-space:nowrap}
+.tgl.on{background:#e3f7ea;color:var(--ok)}
+.q{font-size:11px;font-weight:800;color:#b7791f;background:#fff4dc;border-radius:6px;padding:1px 6px}
+.card.ask{border:2px solid #f5c66a}
+.simfig{border:0;background:none;padding:0;display:block;margin:0 auto;cursor:pointer}
+.simfig svg{display:block;margin:0 auto}
+.sw{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
+.dot{width:36px;height:36px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line)}
+.dot.on{box-shadow:0 0 0 3px var(--acc)}
+.opt{border:1px solid var(--line);background:#faf8ff;border-radius:12px;padding:8px 12px;font:inherit;font-weight:700;color:var(--ink)}
+.opt.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="role"><button data-role="kid">👧 Яна</button><button data-role="parent">👨‍👩‍👧 Родитель</button></div>
+    <div class="top"><h1 id="title"></h1><span class="pill" id="lvl"></span><span class="pill" id="pts"></span></div>
+  </header>
+  <main id="main"></main>
+</div>
+<nav><div class="in" id="nav"></div></nav>
+<div class="toast" id="toast"></div>
+<script>
+// ===== Сим, стиль B (плоский минимал): SVG по слоям + лицо по настроению =====
+var LOOK_DEF = {skin:'#F6D3B3', hair:'bob', hairC:'#6B3E26', top:'#FFB547', bottom:'pants', bottomC:'#3D7BF5', shoes:'#ffffff'};
+var LOOK_OPTS = {
+  skin:   {n:'Кожа', c:['#FBE0CC','#F6D3B3','#E8B48C','#C68A5E','#8D5A3B']},
+  hair:   {n:'Причёска', o:[['bob','Каре'],['long','Длинные'],['pony','Хвостик'],['bun','Пучок']]},
+  hairC:  {n:'Цвет волос', c:['#2B1B12','#6B3E26','#A0522D','#E8C07A','#E0603B','#FF7AB6','#8B6CF6']},
+  top:    {n:'Верх', c:['#FFB547','#FF7AB6','#8B6CF6','#3D7BF5','#3DDC6B','#EF4444','#ffffff','#1F1A2E']},
+  bottom: {n:'Низ', o:[['pants','Брюки'],['skirt','Юбка'],['shorts','Шорты']]},
+  bottomC:{n:'Цвет низа', c:['#3D7BF5','#1F1A2E','#8B6CF6','#FF7AB6','#3DDC6B','#E8C07A','#ffffff']},
+  shoes:  {n:'Обувь', c:['#ffffff','#FF7AB6','#1F1A2E','#8B6CF6','#EF4444']}
+};
+function shade(hex, k){ // затемнить цвет (k<1) для теней и обводок
+  var n = parseInt(hex.slice(1), 16), r = (n >> 16) * k, g = (n >> 8 & 255) * k, b = (n & 255) * k;
+  return '#' + [r, g, b].map(function(x){ return ('0' + Math.round(x).toString(16)).slice(-2); }).join('');
+}
+function starPath(cx, cy, r){
+  var p = '';
+  for (var i = 0; i < 10; i++){ var a = Math.PI / 5 * i - Math.PI / 2, rr = i % 2 ? r * .45 : r; p += (i ? 'L' : 'M') + (cx + rr * Math.cos(a)).toFixed(1) + ',' + (cy + rr * Math.sin(a)).toFixed(1); }
+  return p + 'Z';
+}
+// mood: all | great | good | meh | sad | bad
+function simSVG(L, mood, size){
+  L = L || LOOK_DEF; var k = L.skin, hc = L.hairC, ink = '#2B1B3D', h = '';
+  var white = function(c){ return c.toLowerCase() === '#ffffff' ? ' stroke="#ddd" stroke-width="3"' : ''; };
+  // волосы сзади
+  if (L.hair === 'bob')  h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L285,268 L135,268 Z" fill="'+hc+'"/>';
+  if (L.hair === 'long') h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L294,345 Q210,362 126,345 Z" fill="'+hc+'"/>';
+  if (L.hair === 'pony' || L.hair === 'bun') h += '<path d="M148,195 Q146,126 210,126 Q274,126 272,195 Z" fill="'+hc+'"/>';
+  if (L.hair === 'pony') h += '<path d="M268,160 Q330,170 318,260 Q312,300 290,318 Q300,260 262,200 Z" fill="'+hc+'"/><circle cx="272" cy="172" r="12" fill="#FF7AB6"/>';
+  if (L.hair === 'bun')  h += '<circle cx="210" cy="126" r="34" fill="'+hc+'"/><rect x="190" y="152" width="40" height="10" rx="5" fill="#FF7AB6"/>';
+  // тело
+  h += '<rect x="194" y="262" width="32" height="26" fill="'+k+'"/>';
+  h += '<rect x="118" y="300" width="28" height="110" rx="14" fill="'+k+'"/><rect x="274" y="300" width="28" height="110" rx="14" fill="'+k+'"/>';
+  var bc = L.bottomC;
+  if (L.bottom === 'pants'){
+    h += '<rect x="168" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+white(bc)+'/><rect x="222" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+white(bc)+'/>';
+  } else {
+    var legTop = L.bottom === 'skirt' ? 440 : 430;
+    h += '<rect x="172" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"/><rect x="224" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"/>';
+    if (L.bottom === 'shorts') h += '<rect x="166" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+white(bc)+'/><rect x="220" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+white(bc)+'/>';
+  }
+  h += '<rect x="150" y="286" width="120" height="'+(L.bottom === 'skirt' ? 110 : 120)+'" rx="40" fill="'+L.top+'"'+white(L.top)+'/>';
+  if (L.bottom === 'skirt') h += '<path d="M152,380 L268,380 L292,452 Q210,466 128,452 Z" fill="'+bc+'"'+white(bc)+'/>';
+  else h += '<rect x="150" y="380" width="120" height="56" fill="'+bc+'"'+white(bc)+'/><rect x="150" y="410" width="120" height="40" rx="20" fill="'+bc+'"'+white(bc)+'/>';
+  h += '<rect x="160" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+white(L.shoes)+'/><rect x="214" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+white(L.shoes)+'/>';
+  // голова и чёлка
+  h += '<circle cx="210" cy="205" r="62" fill="'+k+'"/>';
+  h += '<path d="M148,195 Q150,140 210,138 Q270,140 272,195 L272,175 Q240,170 222,148 Q200,172 148,180 Z" fill="'+hc+'"/>';
+  // лицо
+  var cheeks = '<circle cx="172" cy="228" r="8" fill="#FF7AB6" opacity=".35"/><circle cx="248" cy="228" r="8" fill="#FF7AB6" opacity=".35"/>';
+  var dots = '<circle cx="188" cy="210" r="7" fill="'+ink+'"/><circle cx="232" cy="210" r="7" fill="'+ink+'"/>';
+  var arcs = '<path d="M180,213 Q188,202 196,213 M224,213 Q232,202 240,213" fill="none" stroke="'+ink+'" stroke-width="5" stroke-linecap="round"/>';
+  var open = '<path d="M197,233 Q210,252 223,233 Z" fill="#8B2E3B" stroke="#8B2E3B" stroke-width="3" stroke-linejoin="round"/>';
+  var line = function(d){ return '<path d="'+d+'" fill="none" stroke="'+ink+'" stroke-width="5" stroke-linecap="round"/>'; };
+  if (mood === 'all') h += '<path d="'+starPath(188,210,12)+starPath(232,210,12)+'" fill="#FFC21A" stroke="#E0A000" stroke-width="2"/>' + open + cheeks;
+  else if (mood === 'great') h += arcs + open + cheeks;
+  else if (mood === 'good') h += dots + line('M198,236 Q210,246 222,236') + cheeks;
+  else if (mood === 'meh') h += dots + line('M200,240 L220,240');
+  else if (mood === 'sad') h += dots + line('M198,245 Q210,235 222,245');
+  else h += dots + line('M198,247 Q210,235 222,247') + '<path d="M240,220 Q246,232 240,236 Q234,232 240,220 Z" fill="#5BC0F8"/>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 92 220 438" width="'+(size || 130)+'" height="'+Math.round((size || 130) * 438 / 220)+'">' + h + '</svg>';
+}
+
+// ===== СреDA · Яна, v3: реальные дела, частоты, чек-листы, кнопки безопасности, поручения =====
+// Пирамида для 6–9 лет: 4 этажа (по Маслоу, упрощённо)
+var FLOORS = [
+  {id:1, e:'💪', n:'Тело',                 c:'#19b6e0'},
+  {id:2, e:'🛡️', n:'Порядок и безопасность', c:'#4cc72a'},
+  {id:3, e:'❤️', n:'Семья',                c:'#f2b705'},
+  {id:4, e:'⭐', n:'Я расту',               c:'#ff7a1a'}
+];
+// rate = % в час (ночью 21:00–07:00 пауза); weekend = пауза в сб/вс; grow = не убывает, копится
+var NEEDS = [
+  {id:'clean', f:1, e:'🛁', n:'Чистота',      rate:3},
+  {id:'food',  f:1, e:'🍎', n:'Еда',          rate:4},
+  {id:'order', f:2, e:'🧸', n:'Порядок',      rate:4},
+  {id:'safe',  f:2, e:'🛡️', n:'Безопасность', rate:3, weekend:true},
+  {id:'family',f:3, e:'🏡', n:'Семья',        rate:2},
+  {id:'help',  f:3, e:'🧺', n:'Помощь дому',  rate:2.5},
+  {id:'study', f:4, e:'📚', n:'Учёба',        rate:2.5},
+  {id:'care',  f:4, e:'🐠', n:'Забота',       rate:2.5},
+  {id:'art',   f:4, e:'🎨', n:'Творчество',   grow:true}
+];
+// freq: daily | school (пн–пт) | days [0=вс..6=сб] | multi (до max в день) | weekly | every (раз в N дней) | request (по просьбе родителя) | free (по желанию, до 3 в день)
+// pts 0: без баллов (семья → сердце, чтение → «Книголюб», творчество → значки). auto: засчитывается сразу, родителю уведомление
+var DEF_TASKS = [
+  {id:'teeth_m', need:'clean', title:'Почистила зубы утром', pts:5, gain:35, freq:'daily', on:1},
+  {id:'teeth_e', need:'clean', title:'Почистила зубы вечером', pts:5, gain:35, freq:'daily', on:1},
+  {id:'shower', need:'clean', title:'Приняла душ', pts:10, gain:50, freq:'days', days:[3,5]},
+  {id:'shower_sun', need:'clean', title:'Приняла душ и помыла голову', pts:15, gain:60, freq:'days', days:[0]},
+  {id:'lunch', need:'food', title:'Пообедала', pts:5, gain:50, freq:'daily'},
+  {id:'bed', need:'order', title:'Заправила кровать', pts:5, gain:35, freq:'daily', on:1},
+  {id:'meal', need:'order', title:'Убрала за собой после еды', pts:2, gain:20, freq:'multi', max:3, on:1},
+  {id:'clothes', need:'order', title:'Повесила вещи после школы', pts:5, gain:30, freq:'school'},
+  {id:'dishes', need:'order', title:'Помыла свою посуду', pts:3, gain:15, freq:'multi', max:3},
+  {id:'room', need:'order', title:'Порядок в комнате (5 минут)', pts:5, gain:30, freq:'daily'},
+  {id:'room_big', need:'order', title:'Большая уборка в комнате', pts:20, gain:70, freq:'weekly'},
+  {id:'pack', need:'safe', title:'Собралась в школу', pts:10, gain:30, freq:'school', on:1, check:['Телефон','Умные часы','Проездной','Браслет для входа в школу']},
+  {id:'in', need:'safe', title:'Я в школе 🏫', pts:5, gain:30, freq:'school', on:1, auto:1},
+  {id:'out', need:'safe', title:'Я вышла из школы 🚶‍♀️', pts:5, gain:30, freq:'school', on:1, auto:1},
+  {id:'charge', need:'safe', title:'Зарядила телефон и часы', pts:5, gain:30, freq:'daily'},
+  {id:'granny', need:'family', title:'Позвонила бабушке', pts:0, gain:50, freq:'daily', on:1},
+  {id:'dishwasher', need:'help', title:'Загрузила посудомойку', pts:10, gain:40, freq:'daily'},
+  {id:'laundry', need:'help', title:'Достала бельё из стиральной машины', pts:10, gain:40, freq:'request', on:1},
+  {id:'trash', need:'help', title:'Вынесла мусор', pts:10, gain:40, freq:'request', on:1},
+  {id:'shop', need:'help', title:'Сходила в магазин', pts:25, gain:50, freq:'request', on:1},
+  {id:'homework', need:'study', title:'Сделала уроки', pts:20, gain:50, freq:'school', on:1},
+  {id:'read', need:'study', title:'Почитала книгу', pts:0, gain:40, freq:'daily', on:1},
+  {id:'fish', need:'care', title:'Покормила рыбок (одна порция)', pts:5, gain:40, freq:'daily', on:1},
+  {id:'hamster', need:'care', title:'Покормила Варежку', pts:5, gain:35, freq:'daily'},
+  {id:'litter', need:'care', title:'Помыла лоток Вени (в перчатках)', pts:10, gain:40, freq:'every', every:2},
+  {id:'draw', need:'art', title:'Порисовала', pts:0, gain:0, freq:'free', on:1},
+  {id:'clay', need:'art', title:'Слепила из пластилина', pts:0, gain:0, freq:'free', on:1}
+];
+var DEF_REWARDS = [['📺','30 минут мультиков',50],['🍦','Мороженое',80],['🎮','Час на планшете',100],['🌳','Поход в парк',150],['🍕','Пицца-вечер',300],['🧸','Новая игрушка',500]];
+var BADGES = [
+  ['🌱','Первый шаг', function(){ return S.total >= 5; }],
+  ['🔥','3 дня подряд', function(){ return streak() >= 3; }],
+  ['📖','Книголюб: 5 книжных вечеров', function(){ return S.reads >= 5; }],
+  ['🎨','Художник: 5 работ', function(){ return S.art >= 5; }],
+  ['❤️','10 семейных моментов', function(){ return S.heart >= 10; }],
+  ['🛡️','Неделя без «где ты?»', function(){ return S.safeDays >= 5; }],
+  ['🔺','Вся пирамида', function(){ return S.fullPyr; }],
+  ['🏆','500 баллов', function(){ return S.total >= 500; }]
+];
+var DAYN = ['вс','пн','вт','ср','чт','пт','сб'];
+var KEY = 'sreda-yana-v3';
+
+function fresh(){
+  var now = clock();
+  var s = {kid:'Яна', sim:'', look:JSON.parse(JSON.stringify(LOOK_DEF)), points:0, total:0, heart:0, art:0, reads:0, safeDays:0, fullPyr:false, offset:0, streakDays:[], needs:{}, tasks:[], done:{}, pending:{}, notes:{}, checks:{}, buys:[], rewards:[], log:[]};
+  NEEDS.forEach(function(n){ s.needs[n.id] = {v:n.grow ? 0 : 50, t:now}; });
+  DEF_TASKS.forEach(function(t){ var c = JSON.parse(JSON.stringify(t)); c.on = !!t.on; s.tasks.push(c); });
+  DEF_REWARDS.forEach(function(r,i){ s.rewards.push({id:'r'+i, e:r[0], title:r[1], price:r[2]}); });
+  return s;
+}
+var S;
+function load(){ try{ var x = localStorage.getItem(KEY); if (x) return JSON.parse(x); }catch(e){} return null; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+function clock(){ return Date.now() + (S ? S.offset : 0); }
+function dayKey(t){ var d = new Date(t); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+function midnight(t){ var d = new Date(t); d.setHours(0,0,0,0); return d.getTime(); }
+function weekStart(t){ var d = new Date(midnight(t)); d.setDate(d.getDate() - (d.getDay() + 6) % 7); return d.getTime(); }
+function meta(id){ return NEEDS.filter(function(x){ return x.id === id; })[0]; }
+function task(id){ return S.tasks.filter(function(x){ return x.id === id; })[0]; }
+
+// Шкала не тикает: храним значение и время, текущее считаем при открытии
+function awakeHours(t0, t1, weekend){
+  var h = 0, step = 15*60000, t = t0;
+  t1 = Math.min(t1, t0 + 7*24*3600000);
+  while (t < t1){ var d = Math.min(step, t1 - t), dt = new Date(t), hr = dt.getHours(), wd = dt.getDay();
+    if (hr >= 7 && hr < 21 && !(weekend && (wd === 0 || wd === 6))) h += d/3600000; t += d; }
+  return h;
+}
+function needVal(id){
+  var n = S.needs[id], m = meta(id);
+  if (m.grow) return n.v;
+  return Math.max(0, Math.min(100, n.v - m.rate * awakeHours(n.t, clock(), m.weekend)));
+}
+function addNeed(id, g){ S.needs[id] = {v:Math.min(100, needVal(id) + g), t:clock()}; }
+function color(v){ return v > 60 ? '#22b45a' : v > 30 ? '#f5a524' : '#ef4444'; }
+// шкала в игре, если у неё есть включённое регулярное дело (поручения шкалу не включают)
+function needOn(id){ return S.tasks.some(function(t){ return t.need === id && t.on && t.freq !== 'request'; }); }
+function floorNeeds(f){ return NEEDS.filter(function(n){ return n.f === f && needOn(n.id); }); }
+function floorOpen(f){ return floorNeeds(f).some(function(n){ return !n.grow; }); }
+function floorOn(f){ return floorOpen(f) && floorNeeds(f).filter(function(n){ return !n.grow; }).every(function(n){ return needVal(n.id) >= 60; }); }
+
+// ===== расписание дел =====
+function doneList(t){ return S.done[t.id] || []; }
+function countToday(t){ var k = dayKey(clock()); return doneList(t).filter(function(x){ return dayKey(x) === k; }).length; }
+function scheduledToday(t){
+  var wd = new Date(clock()).getDay();
+  if (t.freq === 'school') return wd >= 1 && wd <= 5;
+  if (t.freq === 'days') return t.days.indexOf(wd) >= 0;
+  if (t.freq === 'request') return !!t.requested;
+  return true;
+}
+function limit(t){ return t.freq === 'multi' ? t.max : t.freq === 'free' ? 3 : 1; }
+// состояние дела на сегодня: hide | open | pending | done (+ text)
+function stateOf(t){
+  if (!t.on || !scheduledToday(t)) return {s:'hide'};
+  if (S.pending[t.id]) return {s:'pending'};
+  var c = countToday(t), L = limit(t), last = doneList(t).slice(-1)[0];
+  if (t.freq === 'weekly' && last && last >= weekStart(clock())) return {s:'done', text:'✓ на этой неделе'};
+  if (t.freq === 'every' && last && c === 0){
+    var ago = Math.round((midnight(clock()) - midnight(last)) / 864e5);
+    if (ago < t.every) return {s:'done', text:'✓ снова через '+(t.every - ago)+' дн.'};
+  }
+  if (c >= L) return {s:'done', text: L > 1 ? '✓ '+c+'/'+L : '✓'};
+  return {s:'open', text: L > 1 && t.freq === 'multi' ? c+'/'+L : ''};
+}
+function freqText(t){
+  return t.freq === 'daily' ? 'каждый день' : t.freq === 'school' ? 'по будням' : t.freq === 'days' ? t.days.map(function(d){ return DAYN[d]; }).join(', ')
+    : t.freq === 'multi' ? 'до '+t.max+' раз в день' : t.freq === 'weekly' ? 'раз в неделю' : t.freq === 'every' ? 'раз в '+t.every+' дня'
+    : t.freq === 'request' ? 'по просьбе' : 'по желанию';
+}
+function reward(t){
+  if (t.pts) return '+'+t.pts+' 🪙' + (t.gain ? ' · +'+t.gain+'%' : '');
+  if (t.need === 'art') return '🎨 в копилку творчества';
+  if (t.id === 'read') return '📖 к значку «Книголюб» · +'+t.gain+'%';
+  return '❤️ в сердце семьи · +'+t.gain+'%';
+}
+
+function streak(){
+  var c = 0, t = clock();
+  if (S.streakDays.indexOf(dayKey(t)) < 0) t -= 86400000;
+  while (S.streakDays.indexOf(dayKey(t)) >= 0){ c++; t -= 86400000; }
+  return c;
+}
+function level(){ return Math.floor(S.total / 100) + 1; }
+function time(){ var d = new Date(clock()); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+function log(s){ S.log.unshift(time()+' '+s); S.log = S.log.slice(0, 40); }
+function toast(s){ var el = document.getElementById('toast'); el.textContent = s; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function(){ el.classList.remove('on'); }, 2600); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+// засчитать дело (после подтверждения родителя или сразу для auto)
+function confirmTask(t){
+  delete S.pending[t.id]; delete S.notes[t.id];
+  (S.done[t.id] = S.done[t.id] || []).push(clock()); S.done[t.id] = S.done[t.id].slice(-40);
+  var msg;
+  if (t.need === 'art'){ S.art++; S.needs.art.v = S.art; msg = '🎨 Творчество в копилке!'; }
+  else {
+    addNeed(t.need, t.gain);
+    if (t.pts){ S.points += t.pts; S.total += t.pts; msg = '+'+t.pts+' 🪙 '+S.kid+' получает баллы!'; pop(); }
+    else if (t.id === 'read'){ S.reads++; msg = '📖 +1 к «Книголюбу»'; }
+    else { S.heart++; msg = '❤️ +1 в сердце семьи'; }
+  }
+  if (t.id === 'out' && countToday(task('in')) > 0) S.safeDays++;
+  if (t.freq === 'request') t.requested = false;
+  if (t.oneoff) S.tasks = S.tasks.filter(function(x){ return x !== t; });
+  if (S.streakDays.indexOf(dayKey(clock())) < 0) S.streakDays.push(dayKey(clock()));
+  return msg;
+}
+
+var role = 'kid', tab = {kid:'sim', parent:'check'};
+var TABS = {kid:[['sim','🔺','Моя СреDA'],['tasks','✅','Дела'],['shop','🎁','Магазин']], parent:[['check','🔔','Проверка'],['setup','⚙️','Настройки']]};
+
+function render(){
+  document.querySelectorAll('.role button').forEach(function(b){ b.classList.toggle('on', b.dataset.role === role); });
+  document.querySelector('.role button').textContent = '👧 ' + S.kid;
+  var pend = Object.keys(S.pending).length + S.buys.filter(function(b){return b.status==='pending';}).length;
+  document.getElementById('title').innerHTML = '<small>СРЕDA</small>' + (role === 'kid' ? 'Привет, ' + esc(S.kid) + '!' : 'Кабинет родителя');
+  document.getElementById('lvl').textContent = '⭐ ' + level();
+  document.getElementById('pts').textContent = '🪙 ' + S.points;
+  document.getElementById('nav').innerHTML = TABS[role].map(function(t){
+    var badge = (t[0]==='check' && pend) ? ' ('+pend+')' : '';
+    return '<button data-tab="'+t[0]+'" class="'+(tab[role]===t[0]?'on':'')+'"><span>'+t[1]+'</span>'+t[2]+badge+'</button>';
+  }).join('');
+  document.getElementById('main').innerHTML = VIEWS[tab[role]]();
+}
+
+function safeButtons(){
+  var a = task('in'), b = task('out'), h = '';
+  [a, b].forEach(function(t){
+    var st = stateOf(t); if (st.s === 'hide') return;
+    var last = doneList(t).slice(-1)[0];
+    h += st.s === 'open' ? '<button class="big" data-done="'+t.id+'">'+esc(t.title)+'</button>'
+      : '<div class="big ok">✓ '+esc(t.title)+' · '+new Date(last).toTimeString().slice(0,5)+'</div>';
+  });
+  return h ? '<div class="card"><h2>🛡️ Школа <small>родители сразу получат уведомление</small></h2><div class="bigs">'+h+'</div></div>' : '';
+}
+
+function taskRow(t){
+  var st = stateOf(t);
+  if (st.s === 'hide' || t.auto) return '';
+  var ch = '', ready = true;
+  if (t.check && st.s === 'open'){
+    var c = S.checks[t.id]; if (!c || c.day !== dayKey(clock())) c = S.checks[t.id] = {day:dayKey(clock()), v:t.check.map(function(){ return false; })};
+    ch = '<div class="chk">' + t.check.map(function(x, i){ return '<button class="ci '+(c.v[i]?'on':'')+'" data-ci="'+t.id+':'+i+'">'+(c.v[i]?'☑':'☐')+' '+esc(x)+'</button>'; }).join('') + '</div>';
+    ready = c.v.every(Boolean);
+  }
+  var right = st.s === 'open' ? '<button class="btn" data-done="'+t.id+'" '+(ready?'':'disabled')+'>Сделано'+(st.text?' '+st.text:'')+'</button>'
+    : st.s === 'pending' ? '<span class="st p">⏳ ждёт</span>' : '<span class="st d">'+(st.text||'✓')+'</span>';
+  var note = S.notes[t.id] && st.s === 'open' ? '<div class="ret">↩ Вернули: '+esc(S.notes[t.id])+'</div>' : '';
+  var tag = t.oneoff || t.freq === 'request' ? '<span class="q">⚡ просьба</span> ' : '';
+  return '<div class="task"><div class="t">'+tag+esc(t.title)+'<small>'+reward(t)+'</small>'+note+ch+'</div>'+right+'</div>';
+}
+
+var VIEWS = {
+  sim: function(){
+    var bars = NEEDS.filter(function(n){ return !n.grow && needOn(n.id); });
+    var vals = bars.map(function(n){ return needVal(n.id); });
+    var avg = vals.length ? vals.reduce(function(a,b){return a+b;}, 0) / vals.length : 50;
+    var open = FLOORS.map(function(f){ return floorOpen(f.id); });
+    var on = FLOORS.map(function(f){ return floorOn(f.id); });
+    var all = open.some(Boolean) && FLOORS.every(function(f, i){ return !open[i] || on[i]; });
+    if (all && !S.fullPyr){ S.fullPyr = true; save(); setTimeout(function(){ toast('🔺 Вся пирамида горит! Новый значок!'); }, 300); }
+    var mk = all ? 'all' : avg > 70 ? 'great' : avg > 55 ? 'good' : avg > 40 ? 'meh' : avg > 20 ? 'sad' : 'bad';
+    var mood = all ? 'Идеальный баланс!' : avg > 70 ? 'Отличное настроение!' : avg > 55 ? 'Всё хорошо' : avg > 40 ? 'Так себе…' : avg > 20 ? 'Нужна забота' : 'Срочно помоги себе!';
+    var h = '<div class="card sim"><div class="plumbob" style="background:'+color(avg)+'"></div><button class="simfig" data-act="look">'+simSVG(S.look, mk, 130)+'</button>'
+      + '<button class="simname" data-act="simname">'+(S.sim ? esc(S.sim)+' <span>✏️</span>' : 'Дай мне имя ✏️')+'</button><div class="mood">'+mood+'</div><button class="btn s" data-act="look" style="margin-top:8px">✨ Переодеть</button>';
+    h += '<div class="pyr"><div class="star '+(all?'on':'')+'">🌟</div>';
+    for (var i = FLOORS.length - 1; i >= 0; i--){
+      var f = FLOORS[i], w = [100, 84, 68, 52][i];
+      h += '<div class="fl '+(on[i]?'':'off')+'" data-floor="'+f.id+'" style="width:'+w+'%;background:'+f.c+'">'+(open[i] ? f.e+' '+f.n : '🔒 скоро')+'</div>';
+    }
+    h += '</div><div class="hint">Этаж загорается, когда все его шкалы выше 60%. Зажги все, и вспыхнет звезда!</div></div>';
+    h += safeButtons();
+    h += '<div class="card"><h2>Потребности</h2>';
+    FLOORS.forEach(function(f){
+      var ns = floorNeeds(f.id); if (!ns.length) return;
+      h += '<div class="ftitle" style="color:'+f.c+'">'+f.e+' '+f.n+'</div>';
+      ns.forEach(function(n){
+        if (n.grow){ var c = S.art; h += '<div class="need"><span class="e">'+n.e+'</span><span>'+n.n+'</span><span class="dots">'+(c ? '🎨'.repeat(Math.min(c,8)) + (c > 8 ? ' ×'+c : '') : '<small style="color:var(--mut)">пока пусто</small>')+'</span><b></b></div>'; return; }
+        var v = Math.round(needVal(n.id));
+        h += '<div class="need"><span class="e">'+n.e+'</span><span>'+n.n+'</span><div class="bar"><i style="width:'+v+'%;background:'+color(v)+'"></i></div><b>'+v+'%</b></div>';
+      });
+    });
+    h += '</div><div class="card heart"><div class="e">❤️</div><div><b>Сердце семьи: '+S.heart+'</b><div class="log">Общие моменты без баллов: звонки бабушке, игры, ужины вместе.</div></div></div>';
+    h += '<div class="card"><h2>Значки <small>'+BADGES.filter(function(b){return b[2]();}).length+' из '+BADGES.length+'</small></h2><div class="badges">'
+      + BADGES.map(function(b){ return '<div class="bd '+(b[2]()?'':'off')+'"><div>'+b[0]+'</div>'+b[1]+'</div>'; }).join('') + '</div>'
+      + '<div class="row" style="margin-top:12px"><span class="pill">🔥 Серия: '+streak()+' дн.</span><span class="pill">📈 До ур. '+(level()+1)+': '+(100 - S.total % 100)+' 🪙</span></div></div>';
+    return h;
+  },
+  tasks: function(){
+    var h = safeButtons();
+    var asks = S.tasks.filter(function(t){ return (t.freq === 'request' || t.oneoff) && stateOf(t).s !== 'hide'; });
+    if (asks.length) h += '<div class="card ask"><h2>⚡ Просьбы родителей</h2>' + asks.map(taskRow).join('') + '</div>';
+    FLOORS.forEach(function(f){
+      var rows = '';
+      NEEDS.filter(function(n){ return n.f === f.id; }).forEach(function(n){
+        var list = S.tasks.filter(function(t){ return t.need === n.id && t.freq !== 'request' && !t.oneoff; }).map(taskRow).join('');
+        if (list) rows += '<div class="ftitle" style="color:var(--mut)">'+n.e+' '+n.n+(n.grow ? '' : ' · '+Math.round(needVal(n.id))+'%')+'</div>' + list;
+      });
+      if (rows) h += '<div class="card"><h2 style="color:'+f.c+'">'+f.e+' '+f.n+'</h2>'+rows+'</div>';
+    });
+    return h + '<div class="hint">Показаны дела на сегодня, '+DAYN[new Date(clock()).getDay()]+'. Душ появится в ср, пт и вс 🚿</div>';
+  },
+  look: function(){
+    var L = S.look, h = '<div class="card sim"><div class="simfig">'+simSVG(L, 'great', 150)+'</div><div class="mood">'+(S.sim ? esc(S.sim) : 'Твой Сим')+' примеряет 👀</div></div><div class="card">';
+    Object.keys(LOOK_OPTS).forEach(function(key){
+      var o = LOOK_OPTS[key];
+      h += '<div class="ftitle" style="color:var(--mut)">'+o.n+'</div><div class="sw">';
+      if (o.c) o.c.forEach(function(c){ h += '<button class="dot '+(L[key] === c ? 'on' : '')+'" data-lk="'+key+'|'+c+'" style="background:'+c+'"></button>'; });
+      else o.o.forEach(function(v){ h += '<button class="opt '+(L[key] === v[0] ? 'on' : '')+'" data-lk="'+key+'|'+v[0]+'">'+v[1]+'</button>'; });
+      h += '</div>';
+    });
+    return h + '<div class="log" style="margin-top:12px">Всё это бесплатно. Платья, аксессуары и питомцы появятся в магазине 🛍️</div><button class="btn" data-act="lookdone" style="width:100%;margin-top:12px">Готово ✨</button></div>';
+  },
+  shop: function(){
+    var h = '<div class="card"><h2>🎁 Магазин наград</h2><div class="grid">';
+    S.rewards.forEach(function(r){
+      var p = S.buys.filter(function(b){ return b.rid === r.id && b.status === 'pending'; }).length;
+      h += '<div class="rw"><div class="e">'+r.e+'</div><div class="n">'+esc(r.title)+'</div><div class="p">'+r.price+' 🪙</div>'
+        + (p ? '<span class="st p">⏳ ждёт родителя</span>' : '<button class="btn" data-buy="'+r.id+'" '+(S.points < r.price ? 'disabled' : '')+'>Купить</button>') + '</div>';
+    });
+    h += '</div></div>';
+    var got = S.buys.filter(function(b){ return b.status === 'given'; }).slice(-5).reverse();
+    if (got.length) h += '<div class="card"><h2>Полученные награды</h2>' + got.map(function(b){ return '<div class="log">✅ '+esc(b.title)+'</div>'; }).join('') + '</div>';
+    return h;
+  },
+  check: function(){
+    var h = '<div class="card"><h2>🔔 Ждут проверки</h2><div class="log">Так будут выглядеть сообщения от бота в Telegram:</div>';
+    var pt = Object.keys(S.pending).map(task).filter(Boolean);
+    var pb = S.buys.filter(function(b){ return b.status === 'pending'; });
+    if (!pt.length && !pb.length) h += '<div class="empty">Пока ничего. Переключись на «'+esc(S.kid)+'» и нажми «Сделано» 🙂</div>';
+    pt.forEach(function(t){
+      h += '<div class="tg"><div class="h">Бот «СреDA»</div><div class="b">'+esc(S.kid)+': <b>'+esc(t.title)+'</b><br><small>'+reward(t)+'</small>'
+        + '<div class="k"><button class="btn g" data-ok="'+t.id+'">✅ Подтвердить</button><button class="btn r" data-no="'+t.id+'">↩ Вернуть</button></div></div></div>';
+    });
+    pb.forEach(function(b){
+      h += '<div class="tg"><div class="h">Бот «СреDA»</div><div class="b">'+esc(S.kid)+' покупает награду: <b>'+esc(b.title)+'</b> за '+b.price+' 🪙'
+        + '<div class="k"><button class="btn g" data-give="'+b.id+'">🎁 Выдать</button><button class="btn r" data-deny="'+b.id+'">✖ Не сейчас</button></div></div></div>';
+    });
+    h += '</div><div class="card"><h2>⚡ Попросить '+esc(S.kid)+'</h2><div class="row">'
+      + S.tasks.filter(function(t){ return t.freq === 'request' && t.on; }).map(function(t){
+          return t.requested ? '<span class="st p">⏳ '+esc(t.title)+'</span>' : '<button class="btn s" data-req="'+t.id+'">'+esc(t.title)+' · '+t.pts+' 🪙</button>'; }).join('')
+      + '</div><div class="row" style="margin-top:10px"><input id="et" placeholder="Своё поручение: полей цветы"><input id="ep" type="number" value="15" style="max-width:70px"><button class="btn" data-act="errand">Дать</button></div></div>';
+    h += '<div class="card"><h2>📜 История</h2>' + (S.log.length ? S.log.slice(0,15).map(function(l){ return '<div class="log">'+esc(l)+'</div>'; }).join('') : '<div class="empty">Пусто</div>') + '</div>';
+    return h;
+  },
+  setup: function(){
+    var on = S.tasks.filter(function(t){ return t.on && !t.oneoff && ['request','free'].indexOf(t.freq) < 0 && t.pts > 0; }).length;
+    var h = '<div class="card"><h2>📋 Дела в игре <small>обязательных: '+on+'</small></h2><div class="log">Вводите новые дела волнами: по 1–2 в неделю. Обязательных лучше не больше 8–10.</div>';
+    FLOORS.forEach(function(f){
+      h += '<div class="ftitle" style="color:'+f.c+'">'+f.e+' '+f.n+'</div>';
+      S.tasks.filter(function(t){ return meta(t.need).f === f.id && !t.oneoff; }).forEach(function(t){
+        h += '<div class="task"><div class="t">'+esc(t.title)+'<small>'+freqText(t)+' · '+reward(t)+'</small></div><button class="tgl '+(t.on?'on':'')+'" data-tgl="'+t.id+'">'+(t.on?'в игре':'в запасе')+'</button></div>';
+      });
+    });
+    h += '</div>';
+    var opts = NEEDS.map(function(n){ return '<option value="'+n.id+'">'+n.e+' '+n.n+'</option>'; }).join('');
+    h += '<div class="card"><h2>➕ Новое дело</h2><div class="row"><input id="tt" placeholder="Например: Полила цветы"></div><div class="row" style="margin-top:8px"><select id="tn">'+opts+'</select><input id="tp" type="number" value="10" style="max-width:70px"><button class="btn" data-act="task">Добавить</button></div><div class="log">Добавляется как «каждый день». Для Семьи и Творчества баллы не начисляются.</div></div>'
+      + '<div class="card"><h2>🎁 Новая награда</h2><div class="row"><input id="re" value="🎁" style="max-width:56px"><input id="rt" placeholder="Например: Кино в выходные"></div><div class="row" style="margin-top:8px"><input id="rp" type="number" value="100"><button class="btn" data-act="reward">Добавить</button></div></div>'
+      + '<div class="card"><h2>🔒 PIN родителя</h2><div class="log">Кабинет родителя открывается только по PIN. Хранится только на этом телефоне.</div><button class="btn s" data-act="pin" style="margin-top:8px">Сменить PIN</button></div>'
+      + '<div class="card"><h2>👧 Имя ребёнка</h2><div class="row"><input id="kidname" value="'+esc(S.kid)+'"><button class="btn" data-act="name">Сохранить</button></div></div>'
+      + '<div class="card demo"><h2>🧪 Режим теста</h2><p>«Перемотай» время: шкалы убывают, дела меняются по дням недели. Ночью (21:00–07:00) шкалы на паузе, «Безопасность» на паузе в выходные.</p><div class="row"><button class="btn s" data-act="h1">+1 час</button><button class="btn s" data-act="h3">+3 часа</button><button class="btn s" data-act="d1">+1 день</button><button class="btn r" data-act="reset">Сбросить всё</button></div><p style="margin-top:10px">Время в прототипе: '+new Date(clock()).toLocaleString('ru-RU',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</p></div>';
+    return h;
+  }
+};
+
+var NOPTS = ['family','art'];
+document.addEventListener('click', function(e){
+  var b = e.target.closest('button,[data-floor]'); if (!b) return;
+  var d = b.dataset, t, r, x;
+  if (d.floor){ role = 'kid'; tab.kid = 'tasks'; render(); return; }
+  if (d.role){ if (d.role === 'parent' && role !== 'parent' && !askPin()) return; role = d.role; }
+  else if (d.tab){ tab[role] = d.tab; }
+  else if (d.lk){ x = d.lk.split('|'); S.look[x[0]] = x[1]; }
+  else if (d.ci){ x = d.ci.split(':'); var c = S.checks[x[0]]; c.v[+x[1]] = !c.v[+x[1]]; }
+  else if (d.done){ t = task(d.done); if (stateOf(t).s !== 'open') return;
+    if (t.check){ var cc = S.checks[t.id]; if (!cc || cc.day !== dayKey(clock()) || !cc.v.every(Boolean)) return toast('Сначала отметь всё в списке ☑'); }
+    if (t.auto){ var m = confirmTask(t); log('🔔 Родителям: '+S.kid+' — '+t.title); toast('🔔 Мама и папа получили: «'+t.title+'» · '+m); }
+    else { S.pending[t.id] = 1; delete S.notes[t.id]; log(S.kid+' отметила: '+t.title); toast('Отправлено родителю на проверку ⏳'); } }
+  else if (d.ok){ t = task(d.ok); toast(confirmTask(t)); log('Подтверждено: '+t.title); }
+  else if (d.no){ t = task(d.no); x = prompt('Комментарий для ребёнка (можно пусто):', ''); if (x === null) return;
+    delete S.pending[t.id]; S.notes[t.id] = x || 'проверь ещё раз'; log('Возвращено: '+t.title); toast('Дело вернулось ↩'); }
+  else if (d.req){ t = task(d.req); t.requested = true; log('⚡ Просьба: '+t.title); toast('⚡ '+S.kid+' получила просьбу'); }
+  else if (d.tgl){ t = task(d.tgl); t.on = !t.on; if (t.on && S.needs[t.need] && !needOn_before(t)) S.needs[t.need] = {v:50, t:clock()}; toast(t.on ? 'Дело в игре: '+t.title : 'Дело в запасе'); }
+  else if (d.buy){ r = S.rewards.filter(function(x){ return x.id === d.buy; })[0]; if (S.points < r.price) return;
+    S.buys.push({id:'b'+Date.now(), rid:r.id, title:r.e+' '+r.title, price:r.price, status:'pending'}); log(S.kid+' хочет: '+r.title); toast('Запрос родителю отправлен 🎁'); }
+  else if (d.give){ x = S.buys.filter(function(y){ return y.id === d.give; })[0]; if (S.points < x.price){ toast('Не хватает баллов'); return; }
+    S.points -= x.price; x.status = 'given'; log('Выдана награда: '+x.title+' (−'+x.price+')'); toast('Награда выдана 🎉'); pop(); }
+  else if (d.deny){ x = S.buys.filter(function(y){ return y.id === d.deny; })[0]; x.status = 'denied'; log('Отложена награда: '+x.title); }
+  else if (d.act){
+    if (d.act === 'look'){ tab.kid = 'look'; }
+    if (d.act === 'lookdone'){ tab.kid = 'sim'; toast('Красота! ✨'); }
+    if (d.act === 'simname'){ x = prompt('Как зовут твоего Сима?', S.sim || ''); if (x === null) return; x = x.trim().slice(0, 20); S.sim = x; if (x){ log(S.kid+' назвала Сима: '+x); toast('Привет, я '+x+'! 💚'); } }
+    if (d.act === 'pin'){ if (setPin()) toast('Новый PIN сохранён 🔒'); }
+    if (d.act === 'name'){ x = document.getElementById('kidname').value.trim(); if (x) S.kid = x; toast('Сохранено'); }
+    if (d.act === 'errand'){ x = document.getElementById('et').value.trim(); if (!x) return toast('Напиши, о чём попросить');
+      S.tasks.push({id:'e'+Date.now(), need:'help', title:x, pts:+document.getElementById('ep').value || 15, gain:40, freq:'request', requested:true, oneoff:true, on:true});
+      log('⚡ Поручение: '+x); toast('⚡ '+S.kid+' получила поручение'); }
+    if (d.act === 'task'){ x = document.getElementById('tt').value.trim(); if (!x) return toast('Напиши название дела');
+      var nid = document.getElementById('tn').value, p = NOPTS.indexOf(nid) >= 0 ? 0 : (+document.getElementById('tp').value || 10);
+      S.tasks.push({id:'t'+Date.now(), need:nid, title:x, pts:p, gain:nid === 'art' ? 0 : 40, freq:nid === 'art' ? 'free' : 'daily', on:true}); toast('Дело добавлено'); }
+    if (d.act === 'reward'){ x = document.getElementById('rt').value.trim(); if (!x) return toast('Напиши название награды');
+      S.rewards.push({id:'r'+Date.now(), e:document.getElementById('re').value.trim() || '🎁', title:x, price:+document.getElementById('rp').value || 100}); toast('Награда добавлена'); }
+    if (d.act === 'h1') S.offset += 3600000;
+    if (d.act === 'h3') S.offset += 3*3600000;
+    if (d.act === 'd1') S.offset += 86400000;
+    if (d.act === 'reset'){ if (!confirm('Сбросить все баллы, дела и награды?')) return; S = null; S = fresh(); }
+  }
+  save(); render();
+});
+// новая шкала стартует с 50%, а не с нуля, если до этого её дел не было в игре
+function needOn_before(t){ return S.tasks.some(function(x){ return x !== t && x.need === t.need && x.on && x.freq !== 'request'; }); }
+// PIN кабинета родителя: задаётся при первом входе, хранится только в этом браузере
+function setPin(){
+  var a = prompt('Придумайте PIN для кабинета родителя (4 цифры):'); if (a === null) return false;
+  if (!/^\d{4}$/.test(a)){ toast('Нужно ровно 4 цифры'); return false; }
+  if (prompt('Повторите PIN:') !== a){ toast('PIN не совпал'); return false; }
+  S.pin = a; save(); return true;
+}
+function askPin(){
+  if (!S.pin){ if (!setPin()) return false; toast('PIN сохранён 🔒'); return true; }
+  var x = prompt('PIN родителя:'); if (x === null) return false;
+  if (x !== S.pin){ toast('Неверный PIN 🔒'); return false; }
+  return true;
+}
+function pop(){ setTimeout(function(){ var el = document.getElementById('pts'); el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }, 0); }
+
+S = load() || fresh();
+if (!S.look) S.look = JSON.parse(JSON.stringify(LOOK_DEF));
+render();
+setInterval(function(){ if (tab[role] === 'sim' || tab[role] === 'tasks') render(); }, 30000);
+</script>
+</body>
+</html>
