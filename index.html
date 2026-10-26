@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Восток Импорт Пром — импортёр бренда LOST MARY. Ищем дистрибьюторов в регионах</title>
+<meta name="description" content="Восток Импорт Пром — импортёр бренда LOST MARY. LOST MARY X-LINK и ONIQUE. Ищем дистрибьюторов в регионах России. Информация только для юридических лиц и ИП.">
+<meta name="robots" content="noindex">
+<style>
+@font-face{font-family:"Mont";src:url("fonts/Montserrat.ttf") format("truetype");font-weight:100 900;font-display:swap}
+:root{
+  --bg:#0E0B10; --card:#1A1520; --line:#2A2231; --acc:#FF2A8A; --acc2:#FF6BB0;
+  --text:#FFFFFF; --muted:#B9B3C2;
+  --f-big:clamp(32px,5.2vw,58px); --f-mid:clamp(20px,2.2vw,26px); --f-body:16px;
+  --gap:clamp(64px,9vw,120px); --pad:clamp(16px,4vw,48px); --r:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"Mont",Arial,sans-serif;font-size:var(--f-body);line-height:1.4;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 var(--pad)}
+.muted{color:var(--muted)}
+.acc{color:var(--acc)}
+h1{font-size:var(--f-big);line-height:1.08;font-weight:900;letter-spacing:-.01em}
+h2{font-size:var(--f-big);line-height:1.1;font-weight:800;margin-bottom:32px}
+h3{font-size:var(--f-mid);line-height:1.25;font-weight:700;margin-bottom:10px}
+.lead{font-size:var(--f-mid);line-height:1.35;font-weight:500;color:var(--muted)}
+section{padding:var(--gap) 0 0}
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;font:700 var(--f-body)/1 "Mont",Arial,sans-serif;text-decoration:none;transition:transform .15s,background .15s,box-shadow .15s;white-space:nowrap}
+.btn-acc{background:var(--acc);color:#fff;box-shadow:0 10px 40px -10px rgba(255,42,138,.7)}
+.btn-acc:hover{background:var(--acc2);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.28);color:#fff}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+/* шапка */
+header{position:sticky;top:0;z-index:20;background:rgba(14,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.logo span{color:var(--acc)}
+nav{display:flex;gap:22px}
+nav a{text-decoration:none;color:var(--muted);font-weight:600}
+nav a:hover{color:#fff}
+header .btn{height:44px;padding:0 20px}
+/* первый экран */
+.hero{position:relative;overflow:hidden;padding:clamp(48px,8vw,104px) 0 clamp(56px,8vw,96px);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:-30% -10% auto auto;width:70vw;height:70vw;max-width:900px;max-height:900px;background:radial-gradient(closest-side,rgba(255,42,138,.38),rgba(255,42,138,0));pointer-events:none}
+.hero::after{content:"";position:absolute;left:-20%;bottom:-40%;width:60vw;height:60vw;background:radial-gradient(closest-side,rgba(120,60,255,.18),rgba(120,60,255,0));pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.chip{display:inline-block;padding:8px 16px;border:1px solid rgba(255,42,138,.5);border-radius:999px;color:var(--acc2);font-weight:700;margin-bottom:24px}
+.hero h1{margin-bottom:24px}
+.hero .lead{margin-bottom:36px;max-width:620px}
+.counter{background:linear-gradient(160deg,rgba(255,42,138,.16),rgba(26,21,32,.9) 55%);border:1px solid rgba(255,42,138,.35);border-radius:28px;padding:clamp(24px,3.5vw,40px)}
+.counter .num{font-size:calc(var(--f-big) * 1.6);font-weight:900;line-height:1;color:var(--acc);font-variant-numeric:tabular-nums}
+.counter .lbl{font-size:var(--f-mid);font-weight:700;margin:10px 0 18px}
+.counter p{color:var(--muted)}
+/* кто мы */
+.who{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:end}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.fact b{display:block;font-size:var(--f-mid);font-weight:800;margin-bottom:6px}
+.fact span{color:var(--muted)}
+/* бренды */
+.brands{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.brand{position:relative;overflow:hidden;border-radius:28px;padding:clamp(28px,4vw,48px);min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line)}
+.brand.lm{background:radial-gradient(120% 90% at 100% 0%,rgba(255,42,138,.45),rgba(255,42,138,0) 60%),var(--card)}
+.brand.on{background:radial-gradient(120% 90% at 100% 0%,rgba(150,120,255,.38),rgba(150,120,255,0) 60%),var(--card)}
+.brand .name{font-size:var(--f-big);font-weight:900;letter-spacing:.04em;line-height:1;margin-bottom:12px}
+/* что получает дистрибьютор: бенто */
+.bento{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:10px}
+.cell p{color:var(--muted)}
+.cell .big{font-size:var(--f-big);font-weight:900;line-height:1;color:var(--acc)}
+.cell.main{grid-row:span 2;justify-content:flex-end;background:radial-gradient(110% 80% at 100% 0%,rgba(255,42,138,.42),rgba(255,42,138,0) 60%),var(--card);border-color:rgba(255,42,138,.35)}
+.cell.wide{grid-column:span 2}
+.tag{align-self:flex-start;padding:6px 14px;border-radius:999px;background:rgba(255,42,138,.14);color:var(--acc2);font-weight:700}
+/* сертификат */
+.cert{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.paper{position:relative;background:#fbfaff;color:#1d1530;border-radius:18px;padding:clamp(24px,3.5vw,44px);box-shadow:0 30px 80px -30px rgba(255,42,138,.55);outline:10px solid rgba(110,60,200,.55);outline-offset:-22px;transform:rotate(-1.5deg);text-align:center}
+.paper .t1{font-weight:900;color:#5b2aa6;font-size:var(--f-mid);letter-spacing:.04em;line-height:1.1}
+.paper .t2{font-weight:900;font-size:var(--f-big);letter-spacing:.06em;margin:18px 0 14px;line-height:1}
+.paper p{color:#4a4458}
+.paper .no{position:absolute;top:28px;right:34px;color:#8a8496;font-weight:700}
+.badge{display:inline-flex;align-items:center;gap:10px;margin-top:24px;color:var(--muted);text-decoration:none;font-weight:600}
+.badge b{color:#fff}
+.badge i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;font-weight:900}
+/* X-Link: выгода и логистика */
+.xl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.xl .cell h3{margin-bottom:4px}
+.pack{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+.pack div{border:1px solid var(--line);border-radius:14px;padding:16px}
+.pack b{display:block;font-size:var(--f-mid);font-weight:800;color:#fff}
+.pack span{color:var(--muted)}
+/* девиз: неон текстом */
+.motto{position:relative;overflow:hidden;border-radius:32px;background:#050307;border:1px solid var(--line);padding:clamp(48px,7vw,96px) var(--pad);text-align:center}
+.motto::before{content:"";position:absolute;left:50%;top:50%;width:80%;height:120%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,42,138,.22),rgba(255,42,138,0));pointer-events:none}
+.sign{position:relative;display:inline-block;padding:clamp(24px,4vw,44px) clamp(28px,5vw,64px);border-radius:28px;border:2px solid rgba(255,140,220,.55);box-shadow:0 0 12px rgba(255,42,180,.55),inset 0 0 12px rgba(255,42,180,.35),0 0 60px rgba(255,42,180,.25);animation:frame 7s infinite}
+.neon{display:block;font-weight:900;text-transform:uppercase;letter-spacing:.06em;line-height:.95;font-size:clamp(52px,10vw,128px);color:transparent;-webkit-text-stroke:2px #ffc4ec;
+  text-shadow:0 0 2px #fff,0 0 8px #ff4fd8,0 0 18px #ff2ab4,0 0 38px #ff2ab4,0 0 70px #c21aff;animation:flick 6s infinite}
+.neon.b{animation-delay:1.7s}
+.script{display:block;margin-top:clamp(14px,2vw,22px);font-weight:800;font-style:italic;font-size:clamp(30px,5vw,60px);letter-spacing:.01em;color:#ffe3f6;
+  text-shadow:0 0 4px #fff,0 0 10px #ff4fd8,0 0 24px #ff2ab4,0 0 48px #c21aff;animation:flick2 5s infinite}
+@keyframes flick{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.45;text-shadow:none}}
+@keyframes flick2{0%,70%,74%,100%{opacity:1}72%{opacity:.35;text-shadow:none}}
+@keyframes frame{0%,40%,44%,100%{opacity:1}42%{opacity:.6}}
+@media (prefers-reduced-motion:reduce){.neon,.script,.sign{animation:none}}
+.motto .cap{position:relative;margin-top:clamp(28px,4vw,44px);color:var(--muted)}
+.motto .cap b{color:#fff}
+/* баннер cookie */
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;max-width:720px;margin:0 auto;background:#1A1520;border:1px solid rgba(255,42,138,.35);border-radius:20px;padding:20px 24px;display:none;gap:16px;align-items:center;box-shadow:0 20px 60px -20px rgba(0,0,0,.8)}
+.cookie.show{display:flex}
+.cookie p{color:var(--muted);flex:1}
+.cookie .btn{height:44px;padding:0 20px}
+@media (max-width:640px){.cookie{flex-direction:column;align-items:stretch}.cookie.show~.sticky{display:none}}
+/* почему сейчас: нумерованный список */
+.list{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:120px 1fr 1.2fr;gap:24px;padding:32px 0;border-bottom:1px solid var(--line);align-items:start}
+.row .n{font-size:var(--f-mid);font-weight:900;color:var(--acc)}
+.row h3{margin:0}
+.row p{color:var(--muted)}
+.note{margin-top:20px;color:var(--muted)}
+/* шаги */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px 28px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);display:block;font-weight:900;color:var(--acc);font-size:var(--f-mid);margin-bottom:28px}
+.step p{color:var(--muted)}
+.after-steps{margin-top:32px}
+/* менеджер */
+.mgr{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,56px);align-items:center;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(28px,4vw,56px)}
+.ava{width:clamp(120px,16vw,180px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,42,138,.6),0 20px 50px -15px rgba(255,42,138,.6)}
+.mgr .role{color:var(--acc2);font-weight:700;margin-bottom:16px}
+.mgr p{color:var(--muted);margin-bottom:28px;max-width:640px}
+/* вопросы */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 28px}
+summary{cursor:pointer;list-style:none;font-weight:700;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--acc);font-weight:900}
+details[open] summary::after{content:"−"}
+details p{color:var(--muted);margin-top:14px}
+/* подвал */
+footer{margin-top:var(--gap);border-top:1px solid var(--line);padding:56px 0 96px}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px}
+footer p{color:var(--muted);margin-bottom:8px}
+.age{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1.5px solid var(--muted);border-radius:50%;font-weight:800;color:var(--muted);margin-bottom:12px}
+/* липкая кнопка на телефоне */
+.sticky{display:none}
+@media (max-width:1040px){
+  nav{display:none}
+  .hero .wrap,.who,.brands,.faq,footer .wrap{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:56px 1fr;gap:8px 16px}
+  .row p{grid-column:2}
+  .steps{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .cert{grid-template-columns:1fr}
+  .xl,.pack{grid-template-columns:1fr}
+  .xl .cell.main{grid-row:auto !important}
+  .paper{transform:none}
+  .cell.main{grid-row:auto;min-height:260px}
+  .cell.wide{grid-column:auto}
+  .mgr{grid-template-columns:1fr;text-align:left}
+  .sticky{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:30}
+  .sticky .btn{width:100%}
+  header .btn{display:none}
+}
+@media (max-width:420px){
+  .btn{width:100%}
+  .facts{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Восток <span>Импорт</span> Пром</a>
+    <nav>
+      <a href="#terms">Условия</a>
+      <a href="#xlink">X-Link</a>
+      <a href="#why">Почему сейчас</a>
+      <a href="#steps">Как начать</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="btn btn-acc" href="https://t.me/lost_mary_store" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Написать</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section id="motto" style="padding-top:clamp(24px,4vw,48px)">
+  <div class="wrap">
+    <div class="motto">
+      <div class="sign" role="img" aria-label="LOST MARY — Life’s Merry!">
+        <span class="neon">Lost</span>
+        <span class="neon b">Mary</span>
+        <span class="script">Life’s Merry!</span>
+      </div>
+      <p class="cap">Мы привозим бренд в Россию официально и строим сеть дистрибьюторов в регионах.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero" style="padding-top:clamp(48px,8vw,104px)">
+  <div class="wrap">
+    <div>
+      <span class="chip">Лицензирование 2026–2027</span>
+      <h1>С 1 марта 2027 года розница без лицензии работать не сможет</h1>
+      <p class="lead">Точки будут искать поставщика, у которого всё в порядке. Это шанс для дистрибьютора. «Восток Импорт Пром» — импортёр бренда LOST MARY. Поставляем LOST MARY X-LINK и ONIQUE и ищем партнёров в регионах.</p>
+      <div class="btns">
+        <a class="btn btn-acc" href="https://t.me/lost_mary_store" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Стать дистрибьютором</a>
+        <a class="btn btn-ghost" href="#why">Что меняется</a>
+      </div>
+      <a class="badge" href="#cert"><i>✓</i><span><b>Официальный дистрибьютор LOST MARY в России</b> · сертификат до 23.04.2027</span></a>
+    </div>
+    <div class="counter" aria-live="polite">
+      <div class="num" id="days">—</div>
+      <div class="lbl" id="days-word">дней до 1 марта 2027</div>
+      <p>Столько осталось рознице, чтобы получить лицензию на каждую точку. Дистрибьютор, который подготовит своих клиентов заранее, заберёт рынок.</p>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="who">
+      <h2 style="margin:0">Мы импортёр.<br>Ищем дистрибьюторов в&nbsp;регионах</h2>
+      <p class="lead">Поставляем напрямую, без посредников. Полный пакет документов, работаем строго по законам РФ. Только с юридическими лицами и ИП.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>Импортёр LOST MARY</b><span>прямые поставки без посредников</span></div>
+      <div class="fact"><b>Вся Россия</b><span>доставка транспортными компаниями</span></div>
+      <div class="fact"><b>С 2019 года</b><span>в оптовых продажах, один менеджер в Telegram</span></div>
+      <div class="fact"><b>Документы</b><span>полный пакет, строго по законам РФ</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="cert">
+  <div class="wrap">
+    <div class="cert">
+      <div>
+        <h2>Официальный дистрибьютор LOST MARY в&nbsp;России</h2>
+        <p class="lead" style="margin-bottom:32px">Сертификат правообладателя бренда — Spirit Age Technology Limited. Действует с 23.04.2026 по 23.04.2027.</p>
+        <div class="btns"><a class="btn btn-ghost" href="docs/lost-mary-certificate.pdf" target="_blank" rel="noopener">Открыть сертификат (PDF)</a></div>
+      </div>
+      <a class="paper" href="docs/lost-mary-certificate.pdf" target="_blank" rel="noopener" style="text-decoration:none" aria-label="Сертификат LOST MARY, PDF">
+        <span class="no">No. 202100060</span>
+        <div class="t1">CERTIFICATE<br>OF AUTHORIZATION</div>
+        <div class="t2">LOST MARY</div>
+        <p>ООО «ВОСТОК ИМПОРТ ПРОМ» — LOST MARY official distributor in Russia</p>
+        <p style="margin-top:10px"><b>23/04/2026 – 23/04/2027</b></p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="terms">
+  <div class="wrap">
+    <h2>Что получает дистрибьютор</h2>
+    <div class="bento">
+      <div class="cell main">
+        <span class="tag">Главное</span>
+        <h3>Эксклюзив на регион</h3>
+        <p>Закрепляем регион за вами и выдаём официальное письмо от импортёра бренда LOST MARY.</p>
+      </div>
+      <div class="cell">
+        <div class="big">50 шт.</div>
+        <h3>Минимальная партия</h3>
+        <p>50 штук одного SKU — одного вкуса.</p>
+      </div>
+      <div class="cell">
+        <h3>Гибкая оплата</h3>
+        <p>Предоплата или отсрочка — обсуждаем в зависимости от объёма и региона.</p>
+      </div>
+      <div class="cell wide">
+        <h3>Маркетинговая поддержка</h3>
+        <p>Поддерживаем дистрибьютора в продвижении бренда. Детали обсуждаем индивидуально.</p>
+      </div>
+    </div>
+    <div class="after-steps"><a class="btn btn-acc" href="https://t.me/lost_mary_store" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Узнать условия для моего региона</a></div>
+  </div>
+</section>
+
+<section id="xlink">
+  <div class="wrap">
+    <h2>LOST MARY X-Link: повторные продажи заложены в&nbsp;продукт</h2>
+    <div class="xl">
+      <div class="cell main" style="grid-row:span 2">
+        <span class="tag">Главный аргумент</span>
+        <h3>Устройство одно — поды покупают снова</h3>
+        <p>X-Link — многоразовое смарт-устройство со сменными подами. Покупатель возвращается за новыми подами, а у дистрибьютора и его точек растут повторные продажи.</p>
+      </div>
+      <div class="cell">
+        <div class="big">4 × 40</div>
+        <h3>Широкая матрица</h3>
+        <p>4 вида подов — X-Classic, X-Sweet, X-Ice и X-Nic — и 40 вкусов. Легко закрыть полку под любой спрос.</p>
+      </div>
+      <div class="cell">
+        <h3>Логистика</h3>
+        <div class="pack">
+          <div><b>1</b><span>набор в упаковке, 105 г</span></div>
+          <div><b>10</b><span>наборов в блоке, 1,1 кг</span></div>
+          <div><b>200</b><span>наборов в коробе, 23,3 кг</span></div>
+        </div>
+        <p style="margin-top:8px">Блок 131×155×115 мм, короб 595×277×335 мм. Минимальная партия 50 штук одного SKU — это 5 блоков.</p>
+      </div>
+    </div>
+    <div class="after-steps"><a class="btn btn-acc" href="https://t.me/lost_mary_store" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Получить презентацию и прайс</a></div>
+    <p class="note">Презентацию продукта и прайс отправляем лично дистрибьютору после проверки ИНН.</p>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Что меняется на рынке</h2>
+    <div class="list">
+      <div class="row"><span class="n">01</span><h3>С 1 октября 2026 года — лицензирование</h3><p>Торговля табачной и никотинсодержащей продукцией становится лицензируемой. Заявления уже принимают.</p></div>
+      <div class="row"><span class="n">02</span><h3>С 1 марта 2027 года — только с лицензией</h3><p>Розничной точке без лицензии торговать будет нельзя. Лицензия оформляется на каждую точку.</p></div>
+      <div class="row"><span class="n">03</span><h3>Рынок перераспределится</h3><p>Часть поставщиков и точек уйдёт. Останутся те, у кого легальный товар и порядок в документах.</p></div>
+      <div class="row"><span class="n">04</span><h3>Выиграет подготовленный дистрибьютор</h3><p>Свяжитесь с нами — обсудим условия для вашего региона и пришлём чек-лист по лицензии для ваших клиентов.</p></div>
+    </div>
+    <p class="note">Даты указаны по закону о лицензировании торговли табачной и никотинсодержащей продукцией (по состоянию на октябрь 2026 года).</p>
+  </div>
+</section>
+
+<section id="brands">
+  <div class="wrap">
+    <h2>Бренды</h2>
+    <div class="brands">
+      <div class="brand lm"><div class="name">LOST MARY</div><h3>X-Link</h3><p class="muted">Многоразовое смарт-устройство и сменные поды: 4 вида, 40 вкусов. Официальный импорт.</p></div>
+      <div class="brand on"><div class="name">ONIQUE</div><h3>Линейка ONIQUE</h3><p class="muted">Поставки от импортёра для дистрибьюторов в регионах.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="wrap">
+    <h2>Три шага до первой отгрузки</h2>
+    <div class="steps">
+      <div class="step"><h3>Напишите в Telegram</h3><p>Название компании, регион и ИНН.</p></div>
+      <div class="step"><h3>Получите условия</h3><p>Пришлём презентацию продукта, условия дистрибуции и прайс для вашего региона.</p></div>
+      <div class="step"><h3>Первая отгрузка</h3><p>Отправляем транспортной компанией в ваш город.</p></div>
+    </div>
+    <div class="after-steps"><a class="btn btn-acc" href="https://t.me/lost_mary_store" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Начать в Telegram</a></div>
+  </div>
+</section>
+
+<section id="manager">
+  <div class="wrap">
+    <div class="mgr">
+      <img class="ava" src="img/avatar-lost-mary.jpg" alt="LOST MARY" width="400" height="400" loading="lazy">
+      <div>
+        <h2 style="margin-bottom:8px">Кирилл Благодаров</h2>
+        <div class="role">Руководитель отдела продаж</div>
+        <p>В оптовых продажах с 2019 года. Отвечаю лично: условия, документы, отгрузки — всё в одном чате, без колл-центра и ботов.</p>
+        <a class="btn btn-acc" href="https://t.me/lost_mary_store" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Написать Кириллу</a>
+      </div>
+    </div>
+    <div class="mgr" style="margin-top:16px">
+      <img class="ava" src="img/avatar-lost-mary.jpg" alt="LOST MARY" width="400" height="400" loading="lazy">
+      <div>
+        <h2 style="margin-bottom:8px">Станислав Бормисов</h2>
+        <div class="role">Менеджер по продажам</div>
+        <p>Телефон: <a href="tel:+79603940289">8-960-394-02-89</a></p>
+        <div class="btns">
+          <a class="btn btn-acc" href="https://t.me/hidorakai77" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Написать Станиславу</a>
+          <a class="btn btn-ghost" href="tel:+79603940289">Позвонить</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Вопросы</h2>
+    <div class="faq">
+      <details><summary>Вы продаёте частным лицам?</summary><p>Нет. Мы работаем только с юридическими лицами и индивидуальными предпринимателями.</p></details>
+      <details><summary>Ищете дистрибьюторов в моём регионе?</summary><p>Мы ищем партнёров по всей России. Напишите в Telegram регион и ИНН — расскажем об условиях. Доставляем транспортными компаниями в любой регион России.</p></details>
+      <details><summary>Какие документы вы даёте?</summary><p>Полный пакет документов. Мы работаем строго по законам РФ.</p></details>
+      <details><summary>Какая минимальная партия?</summary><p>50 штук одного SKU (одного вкуса). Условия оплаты — предоплата или отсрочка — зависят от объёма и региона.</p></details>
+      <details><summary>Даёте эксклюзив на регион?</summary><p>Да. Закрепляем регион за дистрибьютором и выдаём официальное письмо от импортёра бренда LOST MARY.</p></details>
+      <details><summary>Почему на сайте нет цен?</summary><p>Условия зависят от региона и объёма, поэтому присылаем прайс лично после проверки ИНН.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#top">Восток <span>Импорт</span> Пром</a>
+      <p style="margin-top:16px">ООО «Восток Импорт Пром», импортёр бренда LOST MARY</p>
+      <p>ИНН 9728009189 · КПП 773601001 · ОГРН 1207700272031</p>
+      <p>г. Москва, ул. Вавилова, д. 69/75</p>
+      <p>Телефон: <a href="tel:+79309898272">8-930-989-82-72</a></p>
+      <p>Telegram: <a href="https://t.me/lost_mary_store" target="_blank" rel="noopener">@lost_mary_store</a></p>
+      <p><a href="cookies.html">Политика cookie</a></p>
+    </div>
+    <div>
+      <div class="age">18+</div>
+      <p>Информация предназначена для юридических лиц и индивидуальных предпринимателей. Сайт не является рекламой.</p>
+      <p>Продажа табачной и никотинсодержащей продукции лицам младше 18 лет запрещена.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie" id="cookie" role="dialog" aria-label="Cookie">
+  <p>Мы используем cookie и Яндекс Метрику, чтобы понимать, как работает сайт. <a href="cookies.html">Подробнее</a></p>
+  <div class="btns"><a class="btn btn-acc" href="#" id="ck-yes">Принять</a><a class="btn btn-ghost" href="#" id="ck-no">Отклонить</a></div>
+</div>
+
+<div class="sticky"><a class="btn btn-acc" href="https://t.me/lost_mary_store" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.4 1.1 11.9c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg> Написать в Telegram</a></div>
+
+<script>
+(function(){
+  var end=Date.UTC(2027,1,28,21,0,0); // 1 марта 2027, 00:00 мск
+  var d=Math.ceil((end-Date.now())/864e5);
+  var el=document.getElementById('days'), w=document.getElementById('days-word');
+  if(d<=0){el.textContent='0';w.textContent='лицензия уже обязательна';return}
+  el.textContent=d;
+  var n=d%100,m=d%10,word=(n>10&&n<20)?'дней':(m===1?'день':(m>=2&&m<=4?'дня':'дней'));
+  w.textContent=word+' до 1 марта 2027';
+})();
+</script>
+<script>
+// Cookie и Яндекс Метрика: счётчик подключается только после «Принять»
+(function(){
+  var METRIKA_ID = 0; // ← номер счётчика Метрики
+  var KEY = 'cookie-consent', box = document.getElementById('cookie'), v = null;
+  try { v = localStorage.getItem(KEY); } catch (e) {}
+  function metrika(){
+    if (!METRIKA_ID) return;
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+    ym(METRIKA_ID,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  }
+  function set(x){ try { localStorage.setItem(KEY, x); } catch (e) {} box.classList.remove('show'); if (x === 'yes') metrika(); }
+  if (v === 'yes') metrika(); else if (v !== 'no') box.classList.add('show');
+  document.getElementById('ck-yes').onclick = function(e){ e.preventDefault(); set('yes'); };
+  document.getElementById('ck-no').onclick = function(e){ e.preventDefault(); set('no'); };
+})();
+</script>
+</body>
+</html>
