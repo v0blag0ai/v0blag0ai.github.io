@@ -502,6 +502,7 @@ var VIEWS = {
     h += '<div class="card"><h2>➕ Новое дело</h2><div class="row"><input id="tt" placeholder="Например: Полила цветы"></div><div class="row" style="margin-top:8px"><select id="tn">'+opts+'</select><input id="tp" type="number" value="10" style="max-width:70px"><button class="btn" data-act="task">Добавить</button></div><div class="log">Добавляется как «каждый день». Для Семьи и Творчества баллы не начисляются.</div></div>'
       + '<div class="card"><h2>🎁 Новая награда</h2><div class="row"><input id="re" value="🎁" style="max-width:56px"><input id="rt" placeholder="Например: Кино в выходные"></div><div class="row" style="margin-top:8px"><input id="rp" type="number" value="100"><button class="btn" data-act="reward">Добавить</button></div></div>'
       + '<div class="card"><h2>🔒 PIN родителя</h2><div class="log">Кабинет родителя открывается только по PIN. Хранится только на этом телефоне.</div><button class="btn s" data-act="pin" style="margin-top:8px">Сменить PIN</button></div>'
+      + '<div class="card"><h2>💾 Сохранить прогресс</h2><div class="log">Баллы, значки, Сим, дела и награды — в один файл. Пригодится при смене телефона и при переезде СреDA на сервер. PIN в файл не попадает.</div><div class="row" style="margin-top:8px"><button class="btn" data-act="export">Сохранить в файл</button><button class="btn s" data-act="import">Загрузить из файла</button></div><input type="file" id="impf" accept=".json,application/json" style="display:none"><p class="log" style="margin-top:8px">'+(S.lastBackup ? 'Последняя копия: '+new Date(S.lastBackup).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}) : 'Копий ещё не было')+'</p></div>'
       + '<div class="card"><h2>👧 Имя ребёнка</h2><div class="row"><input id="kidname" value="'+esc(S.kid)+'"><button class="btn" data-act="name">Сохранить</button></div></div>'
       + '<div class="card demo"><h2>🧪 Режим теста</h2><p>«Перемотай» время: шкалы убывают, дела меняются по дням недели. Ночью (21:00–07:00) шкалы на паузе, «Безопасность» на паузе в выходные.</p><div class="row"><button class="btn s" data-act="h1">+1 час</button><button class="btn s" data-act="h3">+3 часа</button><button class="btn s" data-act="d1">+1 день</button><button class="btn r" data-act="reset">Сбросить всё</button></div><p style="margin-top:10px">Время в прототипе: '+new Date(clock()).toLocaleString('ru-RU',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</p></div>';
     return h;
@@ -545,6 +546,8 @@ document.addEventListener('click', function(e){
       S.tasks.push({id:'t'+Date.now(), need:nid, title:x, pts:p, gain:nid === 'art' ? 0 : 40, freq:nid === 'art' ? 'free' : 'daily', on:true}); toast('Дело добавлено'); }
     if (d.act === 'reward'){ x = document.getElementById('rt').value.trim(); if (!x) return toast('Напиши название награды');
       S.rewards.push({id:'r'+Date.now(), e:document.getElementById('re').value.trim() || '🎁', title:x, price:+document.getElementById('rp').value || 100}); toast('Награда добавлена'); }
+    if (d.act === 'export'){ exportState(); }
+    if (d.act === 'import'){ document.getElementById('impf').click(); return; }
     if (d.act === 'h1') S.offset += 3600000;
     if (d.act === 'h3') S.offset += 3*3600000;
     if (d.act === 'd1') S.offset += 86400000;
@@ -567,6 +570,30 @@ function askPin(){
   if (x !== S.pin){ toast('Неверный PIN 🔒'); return false; }
   return true;
 }
+// Резервная копия: файл .json без PIN; загрузка заменяет прогресс, PIN этого телефона остаётся
+function exportState(){
+  S.lastBackup = Date.now();
+  var data = JSON.parse(JSON.stringify(S)); delete data.pin;
+  var txt = JSON.stringify({app:'sreda', ver:3, saved:new Date().toISOString(), data:data}, null, 1);
+  var d = new Date(), name = 'sreda-'+S.kid+'-'+d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)+'.json';
+  try{
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], {type:'application/json'})); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove(); toast('Файл сохранён в «Загрузки» 💾'); log('Сохранена копия прогресса');
+  }catch(e){ toast('Не получилось сохранить файл'); }
+}
+function importState(txt){
+  var x; try{ x = JSON.parse(txt); }catch(e){ return toast('Это не файл СреDA'); }
+  if (!x || x.app !== 'sreda' || !x.data || !Array.isArray(x.data.tasks) || !x.data.needs) return toast('Это не файл СреDA');
+  if (!confirm('Заменить текущий прогресс копией от '+new Date(x.saved).toLocaleString('ru-RU')+'?')) return;
+  var pin = S.pin; S = x.data; if (pin) S.pin = pin; else delete S.pin;
+  if (!S.look) S.look = JSON.parse(JSON.stringify(LOOK_DEF));
+  log('Прогресс загружен из файла'); save(); render(); toast('Прогресс загружен ✅');
+}
+document.addEventListener('change', function(e){
+  if (e.target.id !== 'impf' || !e.target.files[0]) return;
+  var f = e.target.files[0], rd = new FileReader();
+  rd.onload = function(){ importState(rd.result); }; rd.readAsText(f); e.target.value = '';
+});
 function pop(){ setTimeout(function(){ var el = document.getElementById('pts'); el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }, 0); }
 
 S = load() || fresh();
