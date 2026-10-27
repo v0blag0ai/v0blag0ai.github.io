@@ -99,6 +99,7 @@ input,select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-r
 .card.ask{border:2px solid #f5c66a}
 .simfig{border:0;background:none;padding:0;display:block;margin:0 auto;cursor:pointer}
 .simfig svg{display:block;margin:0 auto}
+.simfig.jump svg{animation:jump .9s ease 2}@keyframes jump{30%{transform:translateY(-18px) scale(1.04,.97)}55%{transform:translateY(0) scale(1.03,.96)}75%{transform:translateY(-6px)}}
 .sw{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
 .dot{width:36px;height:36px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line)}
 .dot.on{box-shadow:0 0 0 3px var(--acc)}
@@ -117,8 +118,8 @@ input,select{font:inherit;padding:9px 10px;border:1px solid var(--line);border-r
 <nav><div class="in" id="nav"></div></nav>
 <div class="toast" id="toast"></div>
 <script>
-// ===== Сим, стиль B (плоский минимал): SVG по слоям + лицо по настроению =====
-var LOOK_DEF = {skin:'#F6D3B3', hair:'bob', hairC:'#6B3E26', top:'#FFB547', bottom:'pants', bottomC:'#3D7BF5', shoes:'#ffffff'};
+// ===== Сим 2.0, стиль B+ (объём, блики, аксессуары, моргание): SVG по слоям + лицо по настроению =====
+var LOOK_DEF = {skin:'#F6D3B3', hair:'bob', hairC:'#6B3E26', top:'#FFB547', bottom:'pants', bottomC:'#3D7BF5', shoes:'#ffffff', hat:'none', glasses:'no', bag:'no'};
 var LOOK_OPTS = {
   skin:   {n:'Кожа', c:['#FBE0CC','#F6D3B3','#E8B48C','#C68A5E','#8D5A3B']},
   hair:   {n:'Причёска', o:[['bob','Каре'],['long','Длинные'],['pony','Хвостик'],['bun','Пучок']]},
@@ -126,7 +127,10 @@ var LOOK_OPTS = {
   top:    {n:'Верх', c:['#FFB547','#FF7AB6','#8B6CF6','#3D7BF5','#3DDC6B','#EF4444','#ffffff','#1F1A2E']},
   bottom: {n:'Низ', o:[['pants','Брюки'],['skirt','Юбка'],['shorts','Шорты']]},
   bottomC:{n:'Цвет низа', c:['#3D7BF5','#1F1A2E','#8B6CF6','#FF7AB6','#3DDC6B','#E8C07A','#ffffff']},
-  shoes:  {n:'Обувь', c:['#ffffff','#FF7AB6','#1F1A2E','#8B6CF6','#EF4444']}
+  shoes:  {n:'Обувь', c:['#ffffff','#FF7AB6','#1F1A2E','#8B6CF6','#EF4444']},
+  hat:    {n:'На голове', o:[['none','Ничего'],['bow','Бантик'],['cap','Кепка'],['crown','Корона']]},
+  glasses:{n:'Очки', o:[['no','Нет'],['yes','Да']]},
+  bag:    {n:'Рюкзак', o:[['no','Нет'],['yes','Да']]}
 };
 function shade(hex, k){ // затемнить цвет (k<1) для теней и обводок
   var n = parseInt(hex.slice(1), 16), r = (n >> 16) * k, g = (n >> 8 & 255) * k, b = (n & 255) * k;
@@ -137,47 +141,73 @@ function starPath(cx, cy, r){
   for (var i = 0; i < 10; i++){ var a = Math.PI / 5 * i - Math.PI / 2, rr = i % 2 ? r * .45 : r; p += (i ? 'L' : 'M') + (cx + rr * Math.cos(a)).toFixed(1) + ',' + (cy + rr * Math.sin(a)).toFixed(1); }
   return p + 'Z';
 }
-// mood: all | great | good | meh | sad | bad
-function simSVG(L, mood, size){
+// mood: all | great | good | meh | sad | bad;  anim=true — моргает и «дышит»
+function simSVG(L, mood, size, anim){
   L = L || LOOK_DEF; var k = L.skin, hc = L.hairC, ink = '#2B1B3D', h = '';
-  var white = function(c){ return c.toLowerCase() === '#ffffff' ? ' stroke="#ddd" stroke-width="3"' : ''; };
+  var ol = function(c){ return ' stroke="'+(c.toLowerCase() === '#ffffff' ? '#d9d4e6' : shade(c, .78))+'" stroke-width="3"'; };
+  var dark = function(d){ return '<path d="'+d+'" fill="#000" opacity=".09"/>'; };
+  var shine = function(d){ return '<path d="'+d+'" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".35"/>'; };
+  // тень на полу
+  h += '<ellipse cx="210" cy="521" rx="78" ry="8" fill="#000" opacity=".10"/>';
+  // рюкзак (сзади)
+  if (L.bag === 'yes') h += '<rect x="158" y="268" width="104" height="120" rx="26" fill="#8B6CF6"'+ol('#8B6CF6')+'/>';
   // волосы сзади
-  if (L.hair === 'bob')  h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L285,268 L135,268 Z" fill="'+hc+'"/>';
-  if (L.hair === 'long') h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L294,345 Q210,362 126,345 Z" fill="'+hc+'"/>';
-  if (L.hair === 'pony' || L.hair === 'bun') h += '<path d="M148,195 Q146,126 210,126 Q274,126 272,195 Z" fill="'+hc+'"/>';
-  if (L.hair === 'pony') h += '<path d="M268,160 Q330,170 318,260 Q312,300 290,318 Q300,260 262,200 Z" fill="'+hc+'"/><circle cx="272" cy="172" r="12" fill="#FF7AB6"/>';
-  if (L.hair === 'bun')  h += '<circle cx="210" cy="126" r="34" fill="'+hc+'"/><rect x="190" y="152" width="40" height="10" rx="5" fill="#FF7AB6"/>';
-  // тело
-  h += '<rect x="194" y="262" width="32" height="26" fill="'+k+'"/>';
-  h += '<rect x="118" y="300" width="28" height="110" rx="14" fill="'+k+'"/><rect x="274" y="300" width="28" height="110" rx="14" fill="'+k+'"/>';
+  if (L.hair === 'bob')  h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L285,268 L135,268 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  if (L.hair === 'long') h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L294,345 Q210,362 126,345 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  if (L.hair === 'pony' || L.hair === 'bun') h += '<path d="M148,195 Q146,126 210,126 Q274,126 272,195 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  if (L.hair === 'pony') h += '<path d="M268,160 Q330,170 318,260 Q312,300 290,318 Q300,260 262,200 Z" fill="'+hc+'"'+ol(hc)+'/>'+shine('M300,190 Q312,215 308,245')+'<circle cx="272" cy="172" r="12" fill="#FF7AB6"'+ol('#FF7AB6')+'/>';
+  if (L.hair === 'bun')  h += '<circle cx="210" cy="126" r="34" fill="'+hc+'"'+ol(hc)+'/>'+shine('M192,108 Q200,98 214,98')+'<rect x="190" y="152" width="40" height="10" rx="5" fill="#FF7AB6"/>';
+  // тело (с «дыханием»)
+  var b = '';
+  b += '<rect x="194" y="258" width="32" height="30" fill="'+k+'"/><ellipse cx="210" cy="266" rx="18" ry="7" fill="'+shade(k, .82)+'"/>';
+  b += '<rect x="118" y="300" width="28" height="110" rx="14" fill="'+k+'"'+ol(k)+'/><rect x="274" y="300" width="28" height="110" rx="14" fill="'+k+'"'+ol(k)+'/>';
+  b += dark('M290,304 Q300,310 300,330 L300,396 Q300,408 288,408 Z');
   var bc = L.bottomC;
   if (L.bottom === 'pants'){
-    h += '<rect x="168" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+white(bc)+'/><rect x="222" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+white(bc)+'/>';
+    b += '<rect x="168" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+ol(bc)+'/><rect x="222" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+ol(bc)+'/>' + dark('M240,424 L250,424 L250,500 L240,500 Z');
   } else {
     var legTop = L.bottom === 'skirt' ? 440 : 430;
-    h += '<rect x="172" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"/><rect x="224" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"/>';
-    if (L.bottom === 'shorts') h += '<rect x="166" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+white(bc)+'/><rect x="220" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+white(bc)+'/>';
+    b += '<rect x="172" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"'+ol(k)+'/><rect x="224" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"'+ol(k)+'/>';
+    if (L.bottom === 'shorts') b += '<rect x="166" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+ol(bc)+'/><rect x="220" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+ol(bc)+'/>';
   }
-  h += '<rect x="150" y="286" width="120" height="'+(L.bottom === 'skirt' ? 110 : 120)+'" rx="40" fill="'+L.top+'"'+white(L.top)+'/>';
-  if (L.bottom === 'skirt') h += '<path d="M152,380 L268,380 L292,452 Q210,466 128,452 Z" fill="'+bc+'"'+white(bc)+'/>';
-  else h += '<rect x="150" y="380" width="120" height="56" fill="'+bc+'"'+white(bc)+'/><rect x="150" y="410" width="120" height="40" rx="20" fill="'+bc+'"'+white(bc)+'/>';
-  h += '<rect x="160" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+white(L.shoes)+'/><rect x="214" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+white(L.shoes)+'/>';
-  // голова и чёлка
-  h += '<circle cx="210" cy="205" r="62" fill="'+k+'"/>';
-  h += '<path d="M148,195 Q150,140 210,138 Q270,140 272,195 L272,175 Q240,170 222,148 Q200,172 148,180 Z" fill="'+hc+'"/>';
+  if (L.bottom !== 'skirt') b += '<rect x="150" y="380" width="120" height="56" fill="'+bc+'"/><rect x="150" y="410" width="120" height="40" rx="20" fill="'+bc+'"'+ol(bc)+'/>' + dark('M240,384 L270,384 L270,432 Q268,448 250,450 L240,450 Z');
+  b += '<rect x="150" y="286" width="120" height="'+(L.bottom === 'skirt' ? 110 : 120)+'" rx="40" fill="'+L.top+'"'+ol(L.top)+'/>';
+  b += dark('M236,290 Q266,292 268,326 L268,'+(L.bottom === 'skirt' ? 380 : 390)+' Q266,'+(L.bottom === 'skirt' ? 394 : 404)+' 236,'+(L.bottom === 'skirt' ? 394 : 404)+' Z');
+  b += '<path d="M190,288 Q210,304 230,288" fill="none" stroke="'+shade(L.top, .78)+'" stroke-width="4" stroke-linecap="round"/>';
+  b += '<path d="M210,350 l5,10 11,1 -8,7 2,11 -10,-6 -10,6 2,-11 -8,-7 11,-1 Z" fill="#fff" opacity=".75"/>';
+  if (L.bottom === 'skirt') b += '<path d="M152,380 L268,380 L292,452 Q210,466 128,452 Z" fill="'+bc+'"'+ol(bc)+'/>' + dark('M238,380 L268,380 L292,452 Q270,457 250,459 Z');
+  if (L.bag === 'yes') b += '<rect x="164" y="288" width="12" height="74" rx="6" fill="#6C4CF5"/><rect x="244" y="288" width="12" height="74" rx="6" fill="#6C4CF5"/>';
+  b += '<rect x="160" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+ol(L.shoes)+'/><rect x="214" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+ol(L.shoes)+'/>';
+  b += '<path d="M164,514 L202,514 M218,514 L256,514" stroke="'+shade(L.shoes, .7)+'" stroke-width="3" stroke-linecap="round" opacity=".6"/>';
+  h += anim ? '<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -2;0 0" dur="3.2s" repeatCount="indefinite"/>'+b+'</g>' : b;
+  // голова
+  var g = '<circle cx="210" cy="205" r="62" fill="'+k+'"'+ol(k)+'/>';
+  g += dark('M250,160 Q272,185 270,212 Q266,250 232,264 Q262,238 258,200 Q256,178 250,160 Z');
+  g += '<path d="M148,195 Q150,140 210,138 Q270,140 272,195 L272,175 Q240,170 222,148 Q200,172 148,180 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  g += shine('M168,160 Q180,146 198,144');
   // лицо
-  var cheeks = '<circle cx="172" cy="228" r="8" fill="#FF7AB6" opacity=".35"/><circle cx="248" cy="228" r="8" fill="#FF7AB6" opacity=".35"/>';
-  var dots = '<circle cx="188" cy="210" r="7" fill="'+ink+'"/><circle cx="232" cy="210" r="7" fill="'+ink+'"/>';
+  var cheeks = '<ellipse cx="170" cy="230" rx="10" ry="7" fill="#FF7AB6" opacity=".4"/><ellipse cx="250" cy="230" rx="10" ry="7" fill="#FF7AB6" opacity=".4"/>';
+  var blink = anim ? '<animate attributeName="ry" values="9;9;1;9" keyTimes="0;.93;.96;1" dur="4.5s" repeatCount="indefinite"/>' : '';
+  var dots = '<ellipse cx="188" cy="210" rx="8" ry="9" fill="'+ink+'">'+blink+'</ellipse><ellipse cx="232" cy="210" rx="8" ry="9" fill="'+ink+'">'+blink+'</ellipse>'
+    + '<circle cx="191" cy="206" r="2.8" fill="#fff"/><circle cx="235" cy="206" r="2.8" fill="#fff"/>'
+;
   var arcs = '<path d="M180,213 Q188,202 196,213 M224,213 Q232,202 240,213" fill="none" stroke="'+ink+'" stroke-width="5" stroke-linecap="round"/>';
-  var open = '<path d="M197,233 Q210,252 223,233 Z" fill="#8B2E3B" stroke="#8B2E3B" stroke-width="3" stroke-linejoin="round"/>';
+  var open = '<path d="M197,233 Q210,254 223,233 Z" fill="#8B2E3B" stroke="#8B2E3B" stroke-width="3" stroke-linejoin="round"/><path d="M203,240 Q210,247 217,240" fill="#FF8FA3"/>';
   var line = function(d){ return '<path d="'+d+'" fill="none" stroke="'+ink+'" stroke-width="5" stroke-linecap="round"/>'; };
-  if (mood === 'all') h += '<path d="'+starPath(188,210,12)+starPath(232,210,12)+'" fill="#FFC21A" stroke="#E0A000" stroke-width="2"/>' + open + cheeks;
-  else if (mood === 'great') h += arcs + open + cheeks;
-  else if (mood === 'good') h += dots + line('M198,236 Q210,246 222,236') + cheeks;
-  else if (mood === 'meh') h += dots + line('M200,240 L220,240');
-  else if (mood === 'sad') h += dots + line('M198,245 Q210,235 222,245');
-  else h += dots + line('M198,247 Q210,235 222,247') + '<path d="M240,220 Q246,232 240,236 Q234,232 240,220 Z" fill="#5BC0F8"/>';
-  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 92 220 438" width="'+(size || 130)+'" height="'+Math.round((size || 130) * 438 / 220)+'">' + h + '</svg>';
+  if (mood === 'all') g += '<path d="'+starPath(188,210,13)+starPath(232,210,13)+'" fill="#FFC21A" stroke="#E0A000" stroke-width="2"/>' + open + cheeks
+    + '<path d="'+starPath(150,150,7)+starPath(276,160,6)+starPath(262,120,5)+'" fill="#FFC21A"/>';
+  else if (mood === 'great') g += arcs + open + cheeks;
+  else if (mood === 'good') g += dots + line('M198,236 Q210,246 222,236') + cheeks;
+  else if (mood === 'meh') g += dots + line('M200,240 L220,240');
+  else if (mood === 'sad') g += dots + line('M198,245 Q210,235 222,245') + line('M178,196 L194,200 M242,196 L226,200');
+  else g += dots + line('M198,247 Q210,235 222,247') + '<path d="M244,222 Q251,236 244,241 Q237,236 244,222 Z" fill="#5BC0F8"/>';
+  // аксессуары
+  if (L.glasses === 'yes') g += '<g fill="#fff" fill-opacity=".18" stroke="'+ink+'" stroke-width="4"><circle cx="188" cy="210" r="17"/><circle cx="232" cy="210" r="17"/></g><path d="M205,208 Q210,204 215,208" fill="none" stroke="'+ink+'" stroke-width="4"/>';
+  if (L.hat === 'bow') g += '<path d="M252,140 L232,124 L234,156 Z M252,140 L272,124 L270,156 Z" fill="#FF4D8D"'+ol('#FF4D8D')+' stroke-linejoin="round"/><circle cx="252" cy="140" r="8" fill="#FF7AB6"'+ol('#FF4D8D')+'/>';
+  if (L.hat === 'cap') g += '<path d="M142,176 Q140,112 210,110 Q280,112 278,176 Q210,164 142,176 Z" fill="#EF4444"'+ol('#EF4444')+'/><path d="M262,170 Q306,168 318,182 Q290,190 262,184 Z" fill="#C81E1E"/><circle cx="210" cy="112" r="6" fill="#C81E1E"/>' + shine('M166,140 Q182,124 204,122');
+  if (L.hat === 'crown') g += '<path d="M176,148 L170,108 L192,128 L210,100 L228,128 L250,108 L244,148 Z" fill="#FFC21A" stroke="#E0A000" stroke-width="3" stroke-linejoin="round"/><circle cx="210" cy="128" r="5" fill="#EF4444"/><circle cx="188" cy="136" r="4" fill="#3D7BF5"/><circle cx="232" cy="136" r="4" fill="#3DDC6B"/>';
+  h += anim ? '<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="3.2s" repeatCount="indefinite"/>'+g+'</g>' : g;
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 86 220 444" width="'+(size || 130)+'" height="'+Math.round((size || 130) * 444 / 220)+'">' + h + '</svg>';
 }
 
 // ===== СреDA · Яна, v3: реальные дела, частоты, чек-листы, кнопки безопасности, поручения =====
@@ -366,6 +396,7 @@ function render(){
     return '<button data-tab="'+t[0]+'" class="'+(tab[role]===t[0]?'on':'')+'"><span>'+t[1]+'</span>'+t[2]+badge+'</button>';
   }).join('');
   document.getElementById('main').innerHTML = VIEWS[tab[role]]();
+  if (role === 'kid' && tab.kid === 'sim' && S.total !== S.seenTotal){ S.seenTotal = S.total; save(); }
 }
 
 function safeButtons(){
@@ -406,7 +437,7 @@ var VIEWS = {
     if (all && !S.fullPyr){ S.fullPyr = true; save(); setTimeout(function(){ toast('🔺 Вся пирамида горит! Новый значок!'); }, 300); }
     var mk = all ? 'all' : avg > 70 ? 'great' : avg > 55 ? 'good' : avg > 40 ? 'meh' : avg > 20 ? 'sad' : 'bad';
     var mood = all ? 'Идеальный баланс!' : avg > 70 ? 'Отличное настроение!' : avg > 55 ? 'Всё хорошо' : avg > 40 ? 'Так себе…' : avg > 20 ? 'Нужна забота' : 'Срочно помоги себе!';
-    var h = '<div class="card sim"><div class="plumbob" style="background:'+color(avg)+'"></div><button class="simfig" data-act="look">'+simSVG(S.look, mk, 130)+'</button>'
+    var h = '<div class="card sim"><div class="plumbob" style="background:'+color(avg)+'"></div><button class="simfig'+(S.total > (S.seenTotal || 0) ? ' jump' : '')+'" data-act="look">'+simSVG(S.look, mk, 130, true)+'</button>'
       + '<button class="simname" data-act="simname">'+(S.sim ? esc(S.sim)+' <span>✏️</span>' : 'Дай мне имя ✏️')+'</button><div class="mood">'+mood+'</div><button class="btn s" data-act="look" style="margin-top:8px">✨ Переодеть</button>';
     h += '<div class="pyr"><div class="star '+(all?'on':'')+'">🌟</div>';
     for (var i = FLOORS.length - 1; i >= 0; i--){
@@ -451,10 +482,12 @@ var VIEWS = {
       var o = LOOK_OPTS[key];
       h += '<div class="ftitle" style="color:var(--mut)">'+o.n+'</div><div class="sw">';
       if (o.c) o.c.forEach(function(c){ h += '<button class="dot '+(L[key] === c ? 'on' : '')+'" data-lk="'+key+'|'+c+'" style="background:'+c+'"></button>'; });
-      else o.o.forEach(function(v){ h += '<button class="opt '+(L[key] === v[0] ? 'on' : '')+'" data-lk="'+key+'|'+v[0]+'">'+v[1]+'</button>'; });
+      else o.o.forEach(function(v){
+        if (key === 'hat' && v[0] === 'crown' && !S.fullPyr) h += '<button class="opt" data-lk="hat|crown" style="opacity:.55">Корона 🔒</button>';
+        else h += '<button class="opt '+(L[key] === v[0] ? 'on' : '')+'" data-lk="'+key+'|'+v[0]+'">'+v[1]+'</button>'; });
       h += '</div>';
     });
-    return h + '<div class="log" style="margin-top:12px">Всё это бесплатно. Платья, аксессуары и питомцы появятся в магазине 🛍️</div><button class="btn" data-act="lookdone" style="width:100%;margin-top:12px">Готово ✨</button></div>';
+    return h + '<div class="log" style="margin-top:12px">Всё это бесплатно. 👑 Корону нельзя купить — только заслужить: зажги всю пирамиду. Платья и питомцы появятся в магазине 🛍️</div><button class="btn" data-act="lookdone" style="width:100%;margin-top:12px">Готово ✨</button></div>';
   },
   shop: function(){
     var h = '<div class="card"><h2>🎁 Магазин наград</h2><div class="grid">';
@@ -516,7 +549,7 @@ document.addEventListener('click', function(e){
   if (d.floor){ role = 'kid'; tab.kid = 'tasks'; render(); return; }
   if (d.role){ if (d.role === 'parent' && role !== 'parent' && !askPin()) return; role = d.role; }
   else if (d.tab){ tab[role] = d.tab; }
-  else if (d.lk){ x = d.lk.split('|'); S.look[x[0]] = x[1]; }
+  else if (d.lk){ x = d.lk.split('|'); if (d.lk === 'hat|crown' && !S.fullPyr) return toast('👑 Корона — за всю пирамиду. Зажги все этажи!'); S.look[x[0]] = x[1]; }
   else if (d.ci){ x = d.ci.split(':'); var c = S.checks[x[0]]; c.v[+x[1]] = !c.v[+x[1]]; }
   else if (d.done){ t = task(d.done); if (stateOf(t).s !== 'open') return;
     if (t.check){ var cc = S.checks[t.id]; if (!cc || cc.day !== dayKey(clock()) || !cc.v.every(Boolean)) return toast('Сначала отметь всё в списке ☑'); }
@@ -587,6 +620,7 @@ function importState(txt){
   if (!confirm('Заменить текущий прогресс копией от '+new Date(x.saved).toLocaleString('ru-RU')+'?')) return;
   var pin = S.pin; S = x.data; if (pin) S.pin = pin; else delete S.pin;
   if (!S.look) S.look = JSON.parse(JSON.stringify(LOOK_DEF));
+  Object.keys(LOOK_DEF).forEach(function(k){ if (!S.look[k]) S.look[k] = LOOK_DEF[k]; });
   log('Прогресс загружен из файла'); save(); render(); toast('Прогресс загружен ✅');
 }
 document.addEventListener('change', function(e){
@@ -598,6 +632,7 @@ function pop(){ setTimeout(function(){ var el = document.getElementById('pts'); 
 
 S = load() || fresh();
 if (!S.look) S.look = JSON.parse(JSON.stringify(LOOK_DEF));
+Object.keys(LOOK_DEF).forEach(function(k){ if (!S.look[k]) S.look[k] = LOOK_DEF[k]; });
 render();
 setInterval(function(){ if (tab[role] === 'sim' || tab[role] === 'tasks') render(); }, 30000);
 </script>
