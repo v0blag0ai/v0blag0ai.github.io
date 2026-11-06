@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>СреDA — Симс в реальной жизни для детей</title>
+<meta name="description" content="Ребёнок делает настоящие дела, родитель подтверждает в Telegram, Сим ребёнка растёт. Набираем первые семьи в бету.">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEGklEQVR4nL2X60/bVhjG/XXd/9NCu14XGiDpSrmEQFkvLISSNJBgkrRMu1TdpLUdmzpN07RJ25ftQ/el2jSmStUqtXSqULdp1aBSW5ICJhCInYuT2Lk4fqbjkNAQO8Qt45HeDzm2zu8557zxeV+KekF0H173WyWP3yrd91vznK87D58lD68lB29XDmNdWdCdWdAdGYySaBfhOUFCgLtNwEhbGiPH0xh+K6WE61gSLnMS500862xNTDlNCbfdHNpFqeliL/Zd6JFCF6wS/FYJ2wY383CaSCTgaE1gqCXO2I2Jxiq43yqJ/zfc0RInBjDUHBPtRq6xvO07sfINeBznjDEMHo0xynGQM99xuGIgigFDdIQYuP8ycE97GpM/5jD5QxbuNv1wOwkDe4/ydeejeuH+XgGzf0ooafYhWUBKH7yJg83AspSvOyfrgV8eEhBeKmCzwkwBH9pSdcMHDMRARKb0wK+Pi0jxMiBX8SHLgJCScX08XSeche1NFlS98BtfZVGQiiAtkWeFAnDzO7Eu+DtHIqC2go92CLj7a74M2Eqld6Yms3CYasMVA7Xg430injzaSDa9ejaTB22JacL7D6+B0oJ/7BCxFqpONr1iVwr4wBZXhRcNqMC/uZxFRsC2KSPI+GKcr4KfPbQKajP8E5eoJNLLakYM4nbyIeRNfxUy53tnoxXwMweJgU3Z7rWm8fvNHB7cLiaeHk2nH+NIYBj755z4W3hSHp/6TcStGwKGWiIV8DMHw6C0vu1jlpTulTcFPQr8+POL4CS+/MzRylatnMBPH1AMqF8sdFf9BoLZZZiCXgXeHBzD0wxT8Vxt5QR+ev8KKK1bje6sNEC29FL4ewSyoYrxlTyH9vl3Fbgh4MYjca7KIDGgBj9FDGhdqaOdyYpJ6OUvFUhr0IvHmXllLCrx6F24pIwfCrjwR/pf1R0617ymCj/1xjIorfvc05Gs2oGmQPGMm4M0HqRnYGOuKL8PzJ3HLX5a84gGjWuq8LeJAa1iwtOxkUQl/SM8gzFIK9AX46f4HU140cCqKrxvX6hoQK2YcLdXGyCaFZ8rx1CCf8v9gq1kP7qqCu/bGwKlVcm4TyQ0JyRZPrh0DV+zP28JVww0hVXhJ/cugXKZeVmtkhmpYUCvBogBFfjJRkamnGaeUyujXMfir/RJLonM0X94RQW+hN6GxQi13rGollF/TeVe2cD0HVEDzsC6h7lLkXapVg33kSOBz/08PvPxmPAlMOFNYGIsrsSn63GNjuHqKIkornpIcLji4fB+f0QT3qMYmB+mSHNA2qV6azi1K1XrI1ML3rNnYaGrYfE1pTsivRppl3YKbt29KFp2Mw0V/SHp1Ui7tBMrr4KXTZhDu0i7RDoWm4GNbB98MdLTwNwjZ17e9nX9B/6DxxN5zQU7AAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F1FA;--card:#fff;--ink:#1F1A2E;--mut:#6E6787;--acc:#6C4CF5;--acc2:#5634E0;--ok:#3DDC6B;--line:#E7E3F3;--f1:#19b6e0;--f2:#4cc72a;--f3:#f2b705;--f4:#ff7a1a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Montserrat,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;text-decoration:none}
+.brand b{color:var(--acc)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--acc);color:#fff;font-weight:700;text-decoration:none;padding:15px 26px;border-radius:999px;box-shadow:0 8px 24px rgba(108,76,245,.28);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:#fff;color:var(--acc);box-shadow:none;border:2px solid var(--line)}
+.btn.sm{padding:10px 18px;font-size:14px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:30px 0 50px}
+h1{font-size:clamp(34px,5.4vw,58px);line-height:1.08;font-weight:800;letter-spacing:-.5px}
+h1 em{font-style:normal;color:var(--acc)}
+.lead{font-size:clamp(17px,1.9vw,20px);color:var(--mut);margin:18px 0 28px;font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stage{position:relative;background:linear-gradient(160deg,#fff,#ECE7FF);border-radius:36px;min-height:440px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.stage .sim{margin-bottom:10px}
+.bubble{position:absolute;background:#fff;border-radius:18px;padding:10px 14px;font-weight:700;font-size:14px;box-shadow:0 8px 24px rgba(31,26,46,.10);animation:float 4s ease-in-out infinite}
+.bubble small{display:block;color:var(--mut);font-weight:600;font-size:12px}
+.b1{left:16px;top:30px}.b2{right:16px;top:120px;animation-delay:1.2s}.b3{left:24px;bottom:120px;animation-delay:2.2s}
+.b2 .ok{color:#17a34a}
+@keyframes float{50%{transform:translateY(-8px)}}
+section{padding:56px 0}
+h2{font-size:clamp(27px,3.6vw,40px);line-height:1.15;font-weight:800;margin-bottom:12px}
+.sub{color:var(--mut);font-size:18px;font-weight:500;max-width:720px}
+.grid{display:grid;gap:16px;margin-top:28px}
+.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border-radius:24px;padding:24px;box-shadow:0 2px 0 var(--line)}
+.card h3{font-size:19px;font-weight:800;margin:8px 0 6px}
+.card p{color:var(--mut);font-weight:500;font-size:16px}
+.ico{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;background:#EFEAFF}
+.step b{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--acc);color:#fff;align-items:center;justify-content:center;font-weight:800}
+.pyr{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-top:24px}
+.floors{display:flex;flex-direction:column;align-items:center;gap:8px}
+.floor{color:#fff;font-weight:800;border-radius:14px;padding:12px 10px;text-align:center;font-size:15px}
+.floor small{display:block;font-weight:600;opacity:.9;font-size:12px}
+.quote{background:var(--ink);color:#fff;border-radius:32px;padding:36px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
+.quote p{font-size:clamp(18px,2.2vw,24px);font-weight:700;line-height:1.35}
+.quote span{color:#B9B2D6;font-weight:500;font-size:15px;display:block;margin-top:10px}
+.safe li{list-style:none;display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:18px;padding:16px 18px;font-weight:600}
+.safe li i{font-style:normal;color:#17a34a;font-weight:800}
+.beta{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:36px;padding:44px 32px;text-align:center}
+.beta h2{color:#fff}.beta p{color:#E4DEFF;font-size:18px;font-weight:500;max-width:620px;margin:0 auto 24px}
+.beta .btn{background:#fff;color:var(--acc)}
+details{background:#fff;border-radius:18px;padding:18px 20px;margin-top:10px}
+summary{font-weight:700;cursor:pointer;list-style:none;font-size:17px}
+summary::after{content:'+';float:right;color:var(--acc);font-weight:800}
+details[open] summary::after{content:'–'}
+details p{color:var(--mut);margin-top:10px;font-weight:500}
+footer{padding:30px 0 50px;color:var(--mut);font-size:14px;text-align:center}
+@media (max-width:860px){
+  .hero,.pyr,.g2{grid-template-columns:1fr}
+  .g3,.g4{grid-template-columns:1fr 1fr}
+  .stage{min-height:380px}
+  .quote{grid-template-columns:1fr;text-align:center}
+}
+@media (max-width:520px){.g3,.g4{grid-template-columns:1fr}.btn{width:100%}header .btn{width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 230 230">
+<defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B5CFF"/><stop offset="1" stop-color="#5634E0"/></linearGradient></defs>
+<rect width="230" height="230" rx="52" fill="url(#lg)"/>
+<path d="M115,44 L190,106 L174,106 L174,184 Q174,190 168,190 L62,190 Q56,190 56,184 L56,106 L40,106 Z" fill="#fff" stroke="#fff" stroke-width="12" stroke-linejoin="round"/>
+<path d="M82,140 l24,23 l46,-50" fill="none" stroke="#3DDC6B" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+</svg><span>Сре<b>DA</b></span></a>
+  <a class="btn sm" href="#beta">Хочу в бету</a>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Симс в&nbsp;реальной жизни: <em>дела настоящие</em>, Сим&nbsp;растёт</h1>
+    <p class="lead">Ребёнок делает настоящие дела: зубы, кровать, уроки, помощь дому. Жмёт «Сделано», родитель подтверждает в&nbsp;Telegram, и&nbsp;только тогда растут баллы и&nbsp;шкалы его Сима.</p>
+    <div class="cta"><a class="btn" href="#beta">Хочу в бету</a><a class="btn ghost" href="#how">Как это работает</a></div>
+  </div>
+  <div class="stage">
+    <div class="bubble b1">Заправила кровать<small>+5 баллов · ждём родителя</small></div>
+    <div class="bubble b2"><span class="ok">✓</span> Папа: «Принять»<small>с работы, за 10 секунд</small></div>
+    <div class="bubble b3">Порядок 60% → 80%<small>комната Сима стала чище</small></div>
+    <div class="sim" id="sim"></div>
+  </div>
+</div>
+</div>
+
+<section style="padding-top:20px"><div class="wrap">
+  <h2>Знакомо?</h2>
+  <div class="grid g3">
+    <div class="card"><div class="ico">🔁</div><h3>Напоминаете по 10 раз</h3><p>«Почисти зубы», «убери игрушки», «где дневник?» — каждый день одно и то же.</p></div>
+    <div class="card"><div class="ico">📋</div><h3>Таблицы и наклейки бросают</h3><p>Первая неделя — восторг, потом про них забывают и дети, и взрослые.</p></div>
+    <div class="card"><div class="ico">🤝</div><h3>Награды превращаются в торг</h3><p>«А что мне за это будет?» вместо привычки. Хочется по-другому.</p></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2>Как это работает</h2>
+  <p class="sub">Дела живут в реальном мире, а в приложении — их отражение. Сим и его комната показывают, как у ребёнка идут дела на самом деле.</p>
+  <div class="grid g4">
+    <div class="card step"><b>1</b><h3>Дела на сегодня</h3><p>Готовый набор для 6–9 лет или ваши дела: зубы, душ, уроки, помощь дому.</p></div>
+    <div class="card step"><b>2</b><h3>«Я сделала!»</h3><p>Ребёнок отмечает дело. Сим ждёт подтверждения от родителя.</p></div>
+    <div class="card step"><b>3</b><h3>Родитель в Telegram</h3><p>Приходит сообщение с кнопками «Принять» или «Не засчитать». Никаких новых приложений для взрослых.</p></div>
+    <div class="card step"><b>4</b><h3>Сим радуется</h3><p>Растут баллы и шкалы, Сим прыгает от радости, комната становится чище. Баллы — на награды, которые выбираете вы.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="pyr">
+    <div>
+      <h2>Не список дел, а&nbsp;пирамида потребностей</h2>
+      <p class="sub">Шкалы Сима разложены по четырём этажам. Этаж загорается, когда его шкалы выше 60%. Ребёнок видит не «обязаловку», а то, как он сам о себе заботится.</p>
+      <p class="sub" style="margin-top:12px">Чтение, творчество и время с семьёй не покупаются баллами: за них — значки. Так интерес не подменяется наградой.</p>
+    </div>
+    <div class="floors">
+      <div class="floor" style="background:var(--f4);width:46%">Я расту<small>учёба, чтение, творчество</small></div>
+      <div class="floor" style="background:var(--f3);width:62%">Семья и друзья<small>помощь, время вместе</small></div>
+      <div class="floor" style="background:var(--f2);width:78%">Режим и покой<small>сон, порядок</small></div>
+      <div class="floor" style="background:var(--f1);width:94%">Тело<small>зубы, душ, движение</small></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Что получает родитель</h2>
+  <div class="grid g3">
+    <div class="card"><div class="ico">⚡</div><h3>10 секунд на подтверждение</h3><p>Кнопка в Telegram — и всё. Можно копить уведомления «раз в час».</p></div>
+    <div class="card"><div class="ico">🌙</div><h3>Итог дня вечером</h3><p>Сколько дел сделано и какая шкала проседает — без допросов за ужином.</p></div>
+    <div class="card"><div class="ico">🎁</div><h3>Награды задаёте вы</h3><p>Мультик, выбор ужина, кафе — со своими ценами. Баллы резервируются, пока вы не нажмёте «Выдать».</p></div>
+    <div class="card"><div class="ico">💛</div><h3>Без штрафов</h3><p>Баллы не отнимают за промахи. «Не засчитано» — это «попробуй ещё», а не наказание.</p></div>
+    <div class="card"><div class="ico">👨‍👩‍👧</div><h3>Вся семья</h3><p>Мама, папа, бабушка или няня — каждый со своей ролью. Подтвердил один — второй видит.</p></div>
+    <div class="card"><div class="ico">🧩</div><h3>Ваши правила</h3><p>Свои дела, расписание («душ в ср, пт, вс»), просьбы на сегодня и награды.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="quote">
+    <div id="sim2"></div>
+    <div><p>Проверяем на своей семье. Прототипом пользуется наша дочь, 8&nbsp;лет. Первое, что она сделала, — дала имя своему Симу.</p><span>Тест на реальной семье идёт с 27 октября 2026. Все идеи из бета-версии — от детей и родителей, а не из головы.</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Безопасность и данные</h2>
+  <ul class="grid g2 safe">
+    <li><i>✓</i>Ребёнку не нужен Telegram и почта: вход по ссылке-приглашению от родителя.</li>
+    <li><i>✓</i>Только необходимое: имя или ник, возраст, дела. Без фото в первой версии.</li>
+    <li><i>✓</i>Никаких чатов с незнакомцами и рекламы внутри.</li>
+    <li><i>✓</i>Согласие родителя на обработку данных, сервер и данные — в России.</li>
+  </ul>
+</div></section>
+
+<section id="beta"><div class="wrap">
+  <div class="beta">
+    <h2>Набираем первые семьи в бету</h2>
+    <p>Для детей 6–9 лет. Напишите нам — расскажем условия, пришлём ссылку и будем вместе делать СреDA удобнее.</p>
+    <a class="btn" href="https://t.me/lost_mary_store" target="_blank" rel="noopener">Написать в Telegram</a>
+  </div>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap">
+  <h2>Вопросы</h2>
+  <details><summary>Для какого возраста?</summary><p>Первая версия — для детей 6–9 лет. Версия для 10–14 лет с большим числом этажей и «уровнем доверия» — в планах.</p></details>
+  <details><summary>Нужен ли ребёнку телефон с Telegram?</summary><p>Нет. Ребёнок открывает СреDA по ссылке от родителя. Telegram нужен только взрослым — для подтверждений и итога дня.</p></details>
+  <details><summary>А если ребёнок нажмёт «Сделано», ничего не сделав?</summary><p>Баллы начисляются только после подтверждения родителя. Без «Принять» Сим просто ждёт.</p></details>
+  <details><summary>Это же ещё больше экрана?</summary><p>Наоборот: дела происходят в реальной жизни, в приложение ребёнок заходит на минуту — отметить и посмотреть на Сима.</p></details>
+  <details><summary>Сколько стоит?</summary><p>Сейчас идёт бета для первых семей. Условия расскажем, когда напишете нам.</p></details>
+</div></section>
+
+<footer>© 2026 СреDA · проект в разработке</footer>
+
+<script>
+// ===== Сим 2.0, стиль B+ (объём, блики, аксессуары, моргание): SVG по слоям + лицо по настроению =====
+var LOOK_DEF = {skin:'#F6D3B3', hair:'bob', hairC:'#6B3E26', top:'#FFB547', bottom:'pants', bottomC:'#3D7BF5', shoes:'#ffffff', hat:'none', glasses:'no', bag:'no'};
+var LOOK_OPTS = {
+  skin:   {n:'Кожа', c:['#FBE0CC','#F6D3B3','#E8B48C','#C68A5E','#8D5A3B']},
+  hair:   {n:'Причёска', o:[['bob','Каре'],['long','Длинные'],['pony','Хвостик'],['bun','Пучок']]},
+  hairC:  {n:'Цвет волос', c:['#2B1B12','#6B3E26','#A0522D','#E8C07A','#E0603B','#FF7AB6','#8B6CF6']},
+  top:    {n:'Верх', c:['#FFB547','#FF7AB6','#8B6CF6','#3D7BF5','#3DDC6B','#EF4444','#ffffff','#1F1A2E']},
+  bottom: {n:'Низ', o:[['pants','Брюки'],['skirt','Юбка'],['shorts','Шорты']]},
+  bottomC:{n:'Цвет низа', c:['#3D7BF5','#1F1A2E','#8B6CF6','#FF7AB6','#3DDC6B','#E8C07A','#ffffff']},
+  shoes:  {n:'Обувь', c:['#ffffff','#FF7AB6','#1F1A2E','#8B6CF6','#EF4444']},
+  hat:    {n:'На голове', o:[['none','Ничего'],['bow','Бантик'],['cap','Кепка'],['crown','Корона']]},
+  glasses:{n:'Очки', o:[['no','Нет'],['yes','Да']]},
+  bag:    {n:'Рюкзак', o:[['no','Нет'],['yes','Да']]}
+};
+function shade(hex, k){ // затемнить цвет (k<1) для теней и обводок
+  var n = parseInt(hex.slice(1), 16), r = (n >> 16) * k, g = (n >> 8 & 255) * k, b = (n & 255) * k;
+  return '#' + [r, g, b].map(function(x){ return ('0' + Math.round(x).toString(16)).slice(-2); }).join('');
+}
+function starPath(cx, cy, r){
+  var p = '';
+  for (var i = 0; i < 10; i++){ var a = Math.PI / 5 * i - Math.PI / 2, rr = i % 2 ? r * .45 : r; p += (i ? 'L' : 'M') + (cx + rr * Math.cos(a)).toFixed(1) + ',' + (cy + rr * Math.sin(a)).toFixed(1); }
+  return p + 'Z';
+}
+// mood: all | great | good | meh | sad | bad;  anim=true — моргает и «дышит»
+function simSVG(L, mood, size, anim){
+  L = L || LOOK_DEF; var k = L.skin, hc = L.hairC, ink = '#2B1B3D', h = '';
+  var ol = function(c){ return ' stroke="'+(c.toLowerCase() === '#ffffff' ? '#d9d4e6' : shade(c, .78))+'" stroke-width="3"'; };
+  var dark = function(d){ return '<path d="'+d+'" fill="#000" opacity=".09"/>'; };
+  var shine = function(d){ return '<path d="'+d+'" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".35"/>'; };
+  // тень на полу
+  h += '<ellipse cx="210" cy="521" rx="78" ry="8" fill="#000" opacity=".10"/>';
+  // рюкзак (сзади)
+  if (L.bag === 'yes') h += '<rect x="158" y="268" width="104" height="120" rx="26" fill="#8B6CF6"'+ol('#8B6CF6')+'/>';
+  // волосы сзади
+  if (L.hair === 'bob')  h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L285,268 L135,268 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  if (L.hair === 'long') h += '<path d="M135,200 Q135,118 210,118 Q285,118 285,200 L294,345 Q210,362 126,345 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  if (L.hair === 'pony' || L.hair === 'bun') h += '<path d="M148,195 Q146,126 210,126 Q274,126 272,195 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  if (L.hair === 'pony') h += '<path d="M268,160 Q330,170 318,260 Q312,300 290,318 Q300,260 262,200 Z" fill="'+hc+'"'+ol(hc)+'/>'+shine('M300,190 Q312,215 308,245')+'<circle cx="272" cy="172" r="12" fill="#FF7AB6"'+ol('#FF7AB6')+'/>';
+  if (L.hair === 'bun')  h += '<circle cx="210" cy="126" r="34" fill="'+hc+'"'+ol(hc)+'/>'+shine('M192,108 Q200,98 214,98')+'<rect x="190" y="152" width="40" height="10" rx="5" fill="#FF7AB6"/>';
+  // тело (с «дыханием»)
+  var b = '';
+  b += '<rect x="194" y="258" width="32" height="30" fill="'+k+'"/><ellipse cx="210" cy="266" rx="18" ry="7" fill="'+shade(k, .82)+'"/>';
+  b += '<rect x="118" y="300" width="28" height="110" rx="14" fill="'+k+'"'+ol(k)+'/><rect x="274" y="300" width="28" height="110" rx="14" fill="'+k+'"'+ol(k)+'/>';
+  b += dark('M290,304 Q300,310 300,330 L300,396 Q300,408 288,408 Z');
+  var bc = L.bottomC;
+  if (L.bottom === 'pants'){
+    b += '<rect x="168" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+ol(bc)+'/><rect x="222" y="420" width="30" height="86" rx="10" fill="'+bc+'"'+ol(bc)+'/>' + dark('M240,424 L250,424 L250,500 L240,500 Z');
+  } else {
+    var legTop = L.bottom === 'skirt' ? 440 : 430;
+    b += '<rect x="172" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"'+ol(k)+'/><rect x="224" y="'+legTop+'" width="24" height="'+(506-legTop)+'" rx="10" fill="'+k+'"'+ol(k)+'/>';
+    if (L.bottom === 'shorts') b += '<rect x="166" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+ol(bc)+'/><rect x="220" y="420" width="34" height="34" rx="10" fill="'+bc+'"'+ol(bc)+'/>';
+  }
+  if (L.bottom !== 'skirt') b += '<rect x="150" y="380" width="120" height="56" fill="'+bc+'"/><rect x="150" y="410" width="120" height="40" rx="20" fill="'+bc+'"'+ol(bc)+'/>' + dark('M240,384 L270,384 L270,432 Q268,448 250,450 L240,450 Z');
+  b += '<rect x="150" y="286" width="120" height="'+(L.bottom === 'skirt' ? 110 : 120)+'" rx="40" fill="'+L.top+'"'+ol(L.top)+'/>';
+  b += dark('M236,290 Q266,292 268,326 L268,'+(L.bottom === 'skirt' ? 380 : 390)+' Q266,'+(L.bottom === 'skirt' ? 394 : 404)+' 236,'+(L.bottom === 'skirt' ? 394 : 404)+' Z');
+  b += '<path d="M190,288 Q210,304 230,288" fill="none" stroke="'+shade(L.top, .78)+'" stroke-width="4" stroke-linecap="round"/>';
+  b += '<path d="M210,350 l5,10 11,1 -8,7 2,11 -10,-6 -10,6 2,-11 -8,-7 11,-1 Z" fill="#fff" opacity=".75"/>';
+  if (L.bottom === 'skirt') b += '<path d="M152,380 L268,380 L292,452 Q210,466 128,452 Z" fill="'+bc+'"'+ol(bc)+'/>' + dark('M238,380 L268,380 L292,452 Q270,457 250,459 Z');
+  if (L.bag === 'yes') b += '<rect x="164" y="288" width="12" height="74" rx="6" fill="#6C4CF5"/><rect x="244" y="288" width="12" height="74" rx="6" fill="#6C4CF5"/>';
+  b += '<rect x="160" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+ol(L.shoes)+'/><rect x="214" y="500" width="46" height="20" rx="10" fill="'+L.shoes+'"'+ol(L.shoes)+'/>';
+  b += '<path d="M164,514 L202,514 M218,514 L256,514" stroke="'+shade(L.shoes, .7)+'" stroke-width="3" stroke-linecap="round" opacity=".6"/>';
+  h += anim ? '<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -2;0 0" dur="3.2s" repeatCount="indefinite"/>'+b+'</g>' : b;
+  // голова
+  var g = '<circle cx="210" cy="205" r="62" fill="'+k+'"'+ol(k)+'/>';
+  g += dark('M250,160 Q272,185 270,212 Q266,250 232,264 Q262,238 258,200 Q256,178 250,160 Z');
+  g += '<path d="M148,195 Q150,140 210,138 Q270,140 272,195 L272,175 Q240,170 222,148 Q200,172 148,180 Z" fill="'+hc+'"'+ol(hc)+'/>';
+  g += shine('M168,160 Q180,146 198,144');
+  // лицо
+  var cheeks = '<ellipse cx="170" cy="230" rx="10" ry="7" fill="#FF7AB6" opacity=".4"/><ellipse cx="250" cy="230" rx="10" ry="7" fill="#FF7AB6" opacity=".4"/>';
+  var blink = anim ? '<animate attributeName="ry" values="9;9;1;9" keyTimes="0;.93;.96;1" dur="4.5s" repeatCount="indefinite"/>' : '';
+  var dots = '<ellipse cx="188" cy="210" rx="8" ry="9" fill="'+ink+'">'+blink+'</ellipse><ellipse cx="232" cy="210" rx="8" ry="9" fill="'+ink+'">'+blink+'</ellipse>'
+    + '<circle cx="191" cy="206" r="2.8" fill="#fff"/><circle cx="235" cy="206" r="2.8" fill="#fff"/>'
+;
+  var arcs = '<path d="M180,213 Q188,202 196,213 M224,213 Q232,202 240,213" fill="none" stroke="'+ink+'" stroke-width="5" stroke-linecap="round"/>';
+  var open = '<path d="M197,233 Q210,254 223,233 Z" fill="#8B2E3B" stroke="#8B2E3B" stroke-width="3" stroke-linejoin="round"/><path d="M203,240 Q210,247 217,240" fill="#FF8FA3"/>';
+  var line = function(d){ return '<path d="'+d+'" fill="none" stroke="'+ink+'" stroke-width="5" stroke-linecap="round"/>'; };
+  if (mood === 'all') g += '<path d="'+starPath(188,210,13)+starPath(232,210,13)+'" fill="#FFC21A" stroke="#E0A000" stroke-width="2"/>' + open + cheeks
+    + '<path d="'+starPath(150,150,7)+starPath(276,160,6)+starPath(262,120,5)+'" fill="#FFC21A"/>';
+  else if (mood === 'great') g += arcs + open + cheeks;
+  else if (mood === 'good') g += dots + line('M198,236 Q210,246 222,236') + cheeks;
+  else if (mood === 'meh') g += dots + line('M200,240 L220,240');
+  else if (mood === 'sad') g += dots + line('M198,245 Q210,235 222,245') + line('M178,196 L194,200 M242,196 L226,200');
+  else g += dots + line('M198,247 Q210,235 222,247') + '<path d="M244,222 Q251,236 244,241 Q237,236 244,222 Z" fill="#5BC0F8"/>';
+  // аксессуары
+  if (L.glasses === 'yes') g += '<g fill="#fff" fill-opacity=".18" stroke="'+ink+'" stroke-width="4"><circle cx="188" cy="210" r="17"/><circle cx="232" cy="210" r="17"/></g><path d="M205,208 Q210,204 215,208" fill="none" stroke="'+ink+'" stroke-width="4"/>';
+  if (L.hat === 'bow') g += '<path d="M252,140 L232,124 L234,156 Z M252,140 L272,124 L270,156 Z" fill="#FF4D8D"'+ol('#FF4D8D')+' stroke-linejoin="round"/><circle cx="252" cy="140" r="8" fill="#FF7AB6"'+ol('#FF4D8D')+'/>';
+  if (L.hat === 'cap') g += '<path d="M142,176 Q140,112 210,110 Q280,112 278,176 Q210,164 142,176 Z" fill="#EF4444"'+ol('#EF4444')+'/><path d="M262,170 Q306,168 318,182 Q290,190 262,184 Z" fill="#C81E1E"/><circle cx="210" cy="112" r="6" fill="#C81E1E"/>' + shine('M166,140 Q182,124 204,122');
+  if (L.hat === 'crown') g += '<path d="M176,148 L170,108 L192,128 L210,100 L228,128 L250,108 L244,148 Z" fill="#FFC21A" stroke="#E0A000" stroke-width="3" stroke-linejoin="round"/><circle cx="210" cy="128" r="5" fill="#EF4444"/><circle cx="188" cy="136" r="4" fill="#3D7BF5"/><circle cx="232" cy="136" r="4" fill="#3DDC6B"/>';
+  h += anim ? '<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="3.2s" repeatCount="indefinite"/>'+g+'</g>' : g;
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 86 220 444" width="'+(size || 130)+'" height="'+Math.round((size || 130) * 444 / 220)+'">' + h + '</svg>';
+}
+
+var LOOK = {skin:'#F6D3B3', hair:'pony', hairC:'#6B3E26', top:'#8B6CF6', bottom:'skirt', bottomC:'#3D7BF5', shoes:'#ffffff', hat:'bow', glasses:'no', bag:'no'};
+document.getElementById('sim').innerHTML = simSVG(LOOK, 'great', 230, true);
+document.getElementById('sim2').innerHTML = simSVG(LOOK, 'all', 140, true);
+</script>
+</body>
+</html>
