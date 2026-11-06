@@ -261,7 +261,9 @@ var DEF_TASKS = [
   {id:'draw', need:'art', title:'Порисовала', pts:0, gain:0, freq:'free', on:1},
   {id:'clay', need:'art', title:'Слепила из пластилина', pts:0, gain:0, freq:'free', on:1}
 ];
-var DEF_REWARDS = [['📺','30 минут мультиков',50],['🍦','Мороженое',80],['🎮','Час на планшете',100],['🌳','Поход в парк',150],['🍕','Пицца-вечер',300],['🧸','Новая игрушка',500]];
+// Магазин v2 — список Яны (06.11). Первое поле — id: у старых наград прежний, чтобы не терялись покупки «ждёт родителя».
+var DEF_REWARDS = [['r0','📺','30 минут мультиков',50],['r1','🍬','Сладкое',80],['r2','🎮','Час на планшете',100],['r6','📱','Час в телефоне',150],['r3','🦁','Зоопарк',200],['r7','🏒','Игра с папой в хоккей',200],['r8','💞','Время с мамой',200],['r4','🍕','Пицца-вечер',300],['r9','🍣','Роллы',500],['r5','🧸','Новая игрушка',500],['r10','🎬','Семейное кино',600]];
+var REWARDS_V = 2;
 var BADGES = [
   ['🌱','Первый шаг', function(){ return S.total >= 5; }],
   ['🔥','3 дня подряд', function(){ return streak() >= 3; }],
@@ -280,8 +282,10 @@ function fresh(){
   var s = {kid:'Яна', sim:'', look:JSON.parse(JSON.stringify(LOOK_DEF)), points:0, total:0, heart:0, art:0, reads:0, safeDays:0, fullPyr:false, offset:0, streakDays:[], needs:{}, tasks:[], done:{}, pending:{}, notes:{}, checks:{}, buys:[], rewards:[], log:[]};
   NEEDS.forEach(function(n){ s.needs[n.id] = {v:n.grow ? 0 : 50, t:now}; });
   DEF_TASKS.forEach(function(t){ var c = JSON.parse(JSON.stringify(t)); c.on = !!t.on; s.tasks.push(c); });
-  DEF_REWARDS.forEach(function(r,i){ s.rewards.push({id:'r'+i, e:r[0], title:r[1], price:r[2]}); });
+  s.rewards = defRewards(); s.rv = REWARDS_V;
   return s;
+}
+function defRewards(){ return DEF_REWARDS.map(function(r){ return {id:r[0], e:r[1], title:r[2], price:r[3]}; });
 }
 var S;
 function load(){ try{ var x = localStorage.getItem(KEY); if (x) return JSON.parse(x); }catch(e){} return null; }
@@ -631,6 +635,8 @@ document.addEventListener('change', function(e){
 function pop(){ setTimeout(function(){ var el = document.getElementById('pts'); el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); }, 0); }
 
 S = load() || fresh();
+// один раз переводим старый магазин на новый список; баллы, дела и прогресс не трогаем, свои добавленные награды оставляем
+if ((S.rv || 1) < REWARDS_V){ var own = (S.rewards || []).filter(function(r){ return !/^r\d$/.test(r.id); }); S.rewards = defRewards().concat(own); S.rv = REWARDS_V; save(); }
 if (!S.look) S.look = JSON.parse(JSON.stringify(LOOK_DEF));
 Object.keys(LOOK_DEF).forEach(function(k){ if (!S.look[k]) S.look[k] = LOOK_DEF[k]; });
 render();
